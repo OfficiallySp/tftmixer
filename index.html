@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TFT Remix Rumble Music Mixer</title>
+</head>
+<body>
+    <h2>Select Tracks to Play</h2>
+    <div>
+        <input type="checkbox" id="track1" name="track1">
+        <label for="track1">Track 1</label>
+        <audio id="audio1" src="path_to_your_first_audio_file.mp3" preload="auto"></audio>
+    </div>
+    <div>
+        <input type="checkbox" id="track2" name="track2">
+        <label for="track2">Track 2</label>
+        <audio id="audio2" src="path_to_your_second_audio_file.mp3" preload="auto"></audio>
+    </div>
+    <!-- Repeat for more tracks -->
+
+    <button onclick="playSelectedTracks()">Play Selected Tracks</button>
+    <script src="script.js"></script>
+</body>
+</html>
