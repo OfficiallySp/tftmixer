@@ -1,16 +1,18 @@
 // script.js
 function playSelectedTracks() {
-    // Stop all tracks first
     stopAllTracks();
 
-    // Check each track and play if selected
-    if (document.getElementById('track1').checked) {
-        document.getElementById('audio1').play();
+    playIfChecked('KDA1', 'audioKDA1');
+    // Repeat the above line for each track, replacing IDs as needed
+
+    playIfChecked('Punk3', 'audioPunk3');
+    // Repeat for pop tracks
+}
+
+function playIfChecked(trackCheckboxId, audioId) {
+    if (document.getElementById(trackCheckboxId).checked) {
+        document.getElementById(audioId).play();
     }
-    if (document.getElementById('track2').checked) {
-        document.getElementById('audio2').play();
-    }
-    // Add similar if conditions for other tracks
 }
 
 function stopAllTracks() {

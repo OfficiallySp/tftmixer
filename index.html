@@ -4,20 +4,25 @@
     <title>TFT Remix Rumble Music Mixer</title>
 </head>
 <body>
+    <h1>TFT Remix Rumble Music Mixer</h1>
     <h2>Select Tracks to Play</h2>
+    <h3>KDA</h3>
     <div>
-        <input type="checkbox" id="track1" name="track1">
-        <label for="track1">kda1</label>
-        <audio id="audio1" src="/tracks/kda1.wav" preload="auto"></audio>
+        <input type="checkbox" id="KDA1" name="KDA1">
+        <label for="KDA1">KDA 1</label>
+        <audio id="audioKDA1" src="tracks/kda1.wav" preload="auto"></audio>
     </div>
+    <h3>Punk</h3>
     <div>
-        <input type="checkbox" id="track2" name="track2">
-        <label for="track2">punk3</label>
-        <audio id="audio2" src="tracks/punk3.wav" preload="auto"></audio>
+        <input type="checkbox" id="Punk3" name="Punk3">
+        <label for="Punk3">Punk 3</label>
+        <audio id="audioPunk3" src="tracks/Punk3.wav" preload="auto"></audio>
     </div>
     <!-- Repeat for more tracks -->
 
     <button onclick="playSelectedTracks()">Play Selected Tracks</button>
+    <button onclick="stopAllTracks()">Stop All Music</button>
     <script src="script.js"></script>
 </body>
 </html>
+
