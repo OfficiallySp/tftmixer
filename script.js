@@ -2,9 +2,9 @@
 function playSelectedTracks() {
     stopAllTracks();
 
-    playIfChecked('KDA1', 'audioKDA1');
+	playIfChecked('KDA1', 'audioKDA1');
     // Repeat the above line for each track, replacing IDs as needed
-    playIfChecked('Punk3', 'audioPunk3');
+	playIfChecked('Punk3', 'audioPunk3');
 	playIfChecked('Maestro3', 'audioMaestro3');
 	playIfChecked('8bit4', 'audio8bit4');
 	// Unknown Tracks
