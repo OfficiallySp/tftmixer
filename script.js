@@ -6,7 +6,7 @@ function playSelectedTracks() {
     // Repeat the above line for each track, replacing IDs as needed
 
     playIfChecked('Punk3', 'audioPunk3');
-    // Repeat for pop tracks
+    // Repeat for other tracks
 }
 
 function playIfChecked(trackCheckboxId, audioId) {
