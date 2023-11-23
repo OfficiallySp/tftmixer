@@ -8,16 +8,16 @@
     body {
         font-family: Arial, sans-serif;
     }
-	
-	h1, h2, h3 {
-		color: #e0e0e0;
-	}
-	
-	label {
-		color: #ffffff;
-	}
-	
-	button {
+    
+    h1, h2, h3 {
+        color: #e0e0e0;
+    }
+    
+    label {
+        color: #ffffff;
+    }
+    
+    button {
         margin-top: 10px;
         padding: 10px 20px;
         background-color: #007bff;
@@ -30,436 +30,269 @@
     button:hover {
         background-color: #0056b3;
     }
-	.background-image {
-		position: fixed; 
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		width: 100%;
-		height: 100%;
+    .background-image {
+        position: fixed; 
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
 
-		/* Image path */
-		background-image: url('bg.jpg');
-		background-size: cover;
-		background-position: center;
-		-webkit-filter: blur(2px);
-		z-index: -1;
-	}
-	
-	.background-darken {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-color: rgba(0, 0, 0, 0.25);
-		z-index: -1;
-	}
+        /* Image path */
+        background-image: url('bg.jpg');
+        background-size: cover;
+        background-position: center;
+        -webkit-filter: blur(2px);
+        z-index: -1;
+    }
+    
+    .background-darken {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.25);
+        z-index: -1;
+    }
 
-	.trait-container {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Creates a responsive grid */
-		gap: 10px;
-		justify-content: space-around;
-	}
+    .trait-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Creates a responsive grid */
+        gap: 10px;
+        justify-content: space-around;
+    }
 
     .trait {
-		text-align: center;
-		background-color: rgba(255, 255, 255, 0.1);
-		padding: 15px;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 15px;
     }
 </style>
 </head>
 <body>
 
 <div class="background-image"></div>
-	<div class="background-darken"></div>
+    <div class="background-darken"></div>
     <h1>TFT Remix Rumble Music Mixer</h1>
     <h2>Select Tracks to Play, Select multiple tracks to play on top of eachover to create unique combinations.</h2>
-	<div class="trait-container">
-		<div class="trait">
-			<img src="icon/kda.png" alt="KDA">
-			<h3>KDA</h3>
-			<input type="checkbox" id="KDA1" name="KDA1">
-			<label for="KDA1">KDA 1</label>
-			<audio id="audioKDA1" src="tracks/kda1.ogg" preload="auto"></audio>
-    	</div>
-    	<div class="trait">
-			<img src="icon/punk.png" alt="Punk">
-			<h3>Punk</h3>
-			<input type="checkbox" id="Punk3" name="Punk3">
-			<label for="Punk3">Punk 3</label>
-			<audio id="audioPunk3" src="tracks/punk3.ogg" preload="auto"></audio>
-    	</div>
-    	<div class="trait">
-			<img src="icon/maestro.png" alt="Maestro">
-			<h3>Maestro</h3>
-			<input type="checkbox" id="Maestro3" name="Maestro3">
-			<label for="Maestro3">Maestro 3???</label>
-			<audio id="audioMaestro3" src="tracks/maestro3.ogg" preload="auto"></audio>
-    	</div>
-    	<div class="trait">
-			<img src="icon/8bit.png" alt="8bit">
-			<h3>8 Bit</h3>
-			<input type="checkbox" id="8bit4" name="8bit4">
-			<label for="8bit4">8-Bit 4???</label>
-			<audio id="audio8bit4" src="tracks/8bit4.ogg" preload="auto"></audio>
-    	</div>
-	</div>
-	<h2>UNKNOWN</h2>
-	    	<div class="trait">
-			<h3>Unknown Tracks</h3>
-			<h2>Please help find these tracks by opening a PR or issue on <a href="https://github.com/OfficiallySp/tftmixer">The Github Repo</a></h2>
-			<input type="checkbox" id="unknown" name="unknown">
-			<label for="unknown">heartsteel?</label>
-			<audio id="audiounknown" src="tracks/unknown1.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown1" name="unknown1">
-			<label for="unknown1">EDM???</label>
-			<audio id="audiounknown1" src="tracks/unknown2.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown2" name="unknown2">
-			<label for="unknown2">3</label>
-			<audio id="audiounknown2" src="tracks/unknown3.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown3" name="unknown3">
-			<label for="unknown3">4</label>
-			<audio id="audiounknown3" src="tracks/unknown4.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown4" name="unknown4">
-			<label for="unknown4">5</label>
-			<audio id="audiounknown4" src="tracks/unknown5.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown5" name="unknown5">
-			<label for="unknown5">6</label>
-			<audio id="audiounknown5" src="tracks/unknown6.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown6" name="unknown6">
-			<label for="unknown6">7</label>
-			<audio id="audiounknown6" src="tracks/unknown7.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown7" name="unknown7">
-			<label for="unknown7">8</label>
-			<audio id="audiounknown7" src="tracks/unknown8.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown8" name="unknown8">
-			<label for="unknown8">9</label>
-			<audio id="audiounknown8" src="tracks/unknown9.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown9" name="unknown9">
-			<label for="unknown9">10</label>
-			<audio id="audiounknown9" src="tracks/unknown10.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown10" name="unknown10">
-			<label for="unknown10">11</label>
-			<audio id="audiounknown10" src="tracks/unknown11.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown11" name="unknown11">
-			<label for="unknown11">12</label>
-			<audio id="audiounknown11" src="tracks/unknown12.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown12" name="unknown12">
-			<label for="unknown12">13</label>
-			<audio id="audiounknown12" src="tracks/unknown13.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown13" name="unknown13">
-			<label for="unknown13">14</label>
-			<audio id="audiounknown13" src="tracks/unknown14.ogg" preload="auto"></audio>
-
-			<input type="checkbox" id="unknown14" name="unknown14">
-			<label for="unknown14">15</label>
-			<audio id="audiounknown14" src="tracks/unknown15.ogg" preload="auto"></audio>
-
-			<input type="checkbox" id="unknown15" name="unknown15">
-			<label for="unknown15">16</label>
-			<audio id="audiounknown15" src="tracks/unknown16.ogg" preload="auto"></audio>
-
-			<input type="checkbox" id="unknown16" name="unknown16">
-			<label for="unknown16">17</label>
-			<audio id="audiounknown16" src="tracks/unknown17.ogg" preload="auto"></audio>
-
-			<input type="checkbox" id="unknown17" name="unknown17">
-			<label for="unknown17">18</label>
-			<audio id="audiounknown17" src="tracks/unknown18.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown18" name="unknown18">
-			<label for="unknown18">19</label>
-			<audio id="audiounknown18" src="tracks/unknown19.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown19" name="unknown19">
-			<label for="unknown19">20</label>
-			<audio id="audiounknown19" src="tracks/unknown20.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown20" name="unknown20">
-			<label for="unknown20">21</label>
-			<audio id="audiounknown20" src="tracks/unknown21.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown21" name="unknown21">
-			<label for="unknown21">22</label>
-			<audio id="audiounknown21" src="tracks/unknown22.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown22" name="unknown22">
-			<label for="unknown22">23</label>
-			<audio id="audiounknown22" src="tracks/unknown23.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown23" name="unknown23">
-			<label for="unknown23">24</label>
-			<audio id="audiounknown23" src="tracks/unknown24.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown24" name="unknown24">
-			<label for="unknown24">25</label>
-			<audio id="audiounknown24" src="tracks/unknown25.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown25" name="unknown25">
-			<label for="unknown25">26</label>
-			<audio id="audiounknown25" src="tracks/unknown26.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown26" name="unknown26">
-			<label for="unknown26">27</label>
-			<audio id="audiounknown26" src="tracks/unknown27.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown27" name="unknown27">
-			<label for="unknown27">28</label>
-			<audio id="audiounknown27" src="tracks/unknown28.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown28" name="unknown28">
-			<label for="unknown28">29</label>
-			<audio id="audiounknown28" src="tracks/unknown29.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown29" name="unknown29">
-			<label for="unknown29">30</label>
-			<audio id="audiounknown29" src="tracks/unknown30.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown30" name="unknown30">
-			<label for="unknown30">31</label>
-			<audio id="audiounknown30" src="tracks/unknown31.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown31" name="unknown31">
-			<label for="unknown31">32</label>
-			<audio id="audiounknown31" src="tracks/unknown32.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown32" name="unknown32">
-			<label for="unknown32">33</label>
-			<audio id="audiounknown32" src="tracks/unknown33.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown33" name="unknown33">
-			<label for="unknown33">34</label>
-			<audio id="audiounknown33" src="tracks/unknown34.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown34" name="unknown34">
-			<label for="unknown34">35</label>
-			<audio id="audiounknown34" src="tracks/unknown35.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown35" name="unknown35">
-			<label for="unknown35">36</label>
-			<audio id="audiounknown35" src="tracks/unknown36.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown36" name="unknown36">
-			<label for="unknown36">37</label>
-			<audio id="audiounknown36" src="tracks/unknown37.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown37" name="unknown37">
-			<label for="unknown37">38</label>
-			<audio id="audiounknown37" src="tracks/unknown38.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown38" name="unknown38">
-			<label for="unknown38">39</label>
-			<audio id="audiounknown38" src="tracks/unknown39.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown39" name="unknown39">
-			<label for="unknown39">40</label>
-			<audio id="audiounknown39" src="tracks/unknown40.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown40" name="unknown40">
-			<label for="unknown40">41</label>
-			<audio id="audiounknown40" src="tracks/unknown41.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown41" name="unknown41">
-			<label for="unknown41">42</label>
-			<audio id="audiounknown41" src="tracks/unknown42.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown42" name="unknown42">
-			<label for="unknown42">43</label>
-			<audio id="audiounknown42" src="tracks/unknown43.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown43" name="unknown43">
-			<label for="unknown43">44</label>
-			<audio id="audiounknown43" src="tracks/unknown44.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown44" name="unknown44">
-			<label for="unknown44">45</label>
-			<audio id="audiounknown44" src="tracks/unknown45.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown45" name="unknown45">
-			<label for="unknown45">46</label>
-			<audio id="audiounknown45" src="tracks/unknown46.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown46" name="unknown46">
-			<label for="unknown46">47</label>
-			<audio id="audiounknown46" src="tracks/unknown47.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown47" name="unknown47">
-			<label for="unknown47">48</label>
-			<audio id="audiounknown47" src="tracks/unknown48.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown48" name="unknown48">
-			<label for="unknown48">49</label>
-			<audio id="audiounknown48" src="tracks/unknown49.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown49" name="unknown49">
-			<label for="unknown49">50</label>
-			<audio id="audiounknown49" src="tracks/unknown50.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown50" name="unknown50">
-			<label for="unknown50">51</label>
-			<audio id="audiounknown50" src="tracks/unknown51.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown51" name="unknown51">
-			<label for="unknown51">52</label>
-			<audio id="audiounknown51" src="tracks/unknown52.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown52" name="unknown52">
-			<label for="unknown52">53</label>
-			<audio id="audiounknown52" src="tracks/unknown53.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown53" name="unknown53">
-			<label for="unknown53">54</label>
-			<audio id="audiounknown53" src="tracks/unknown54.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown54" name="unknown54">
-			<label for="unknown54">55</label>
-			<audio id="audiounknown54" src="tracks/unknown55.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown55" name="unknown55">
-			<label for="unknown55">56</label>
-			<audio id="audiounknown55" src="tracks/unknown56.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown56" name="unknown56">
-			<label for="unknown56">57</label>
-			<audio id="audiounknown56" src="tracks/unknown57.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown57" name="unknown57">
-			<label for="unknown57">58</label>
-			<audio id="audiounknown57" src="tracks/unknown58.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown58" name="unknown58">
-			<label for="unknown58">59</label>
-			<audio id="audiounknown58" src="tracks/unknown59.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown59" name="unknown59">
-			<label for="unknown59">60</label>
-			<audio id="audiounknown59" src="tracks/unknown60.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown60" name="unknown60">
-			<label for="unknown60">61</label>
-			<audio id="audiounknown60" src="tracks/unknown61.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown61" name="unknown61">
-			<label for="unknown61">62</label>
-			<audio id="audiounknown61" src="tracks/unknown62.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown62" name="unknown62">
-			<label for="unknown62">63</label>
-			<audio id="audiounknown62" src="tracks/unknown63.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown63" name="unknown63">
-			<label for="unknown63">64</label>
-			<audio id="audiounknown63" src="tracks/unknown64.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown64" name="unknown64">
-			<label for="unknown64">65</label>
-			<audio id="audiounknown64" src="tracks/unknown65.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown65" name="unknown65">
-			<label for="unknown65">66</label>
-			<audio id="audiounknown65" src="tracks/unknown66.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown66" name="unknown66">
-			<label for="unknown66">67</label>
-			<audio id="audiounknown66" src="tracks/unknown67.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown67" name="unknown67">
-			<label for="unknown67">68</label>
-			<audio id="audiounknown67" src="tracks/unknown68.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown68" name="unknown68">
-			<label for="unknown68">69</label>
-			<audio id="audiounknown68" src="tracks/unknown69.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown69" name="unknown69">
-			<label for="unknown69">70</label>
-			<audio id="audiounknown69" src="tracks/unknown70.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown70" name="unknown70">
-			<label for="unknown70">71</label>
-			<audio id="audiounknown70" src="tracks/unknown71.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown71" name="unknown71">
-			<label for="unknown71">72</label>
-			<audio id="audiounknown71" src="tracks/unknown72.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown72" name="unknown72">
-			<label for="unknown72">73</label>
-			<audio id="audiounknown72" src="tracks/unknown73.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown73" name="unknown73">
-			<label for="unknown73">74</label>
-			<audio id="audiounknown73" src="tracks/unknown74.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown74" name="unknown74">
-			<label for="unknown74">75</label>
-			<audio id="audiounknown74" src="tracks/unknown75.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown75" name="unknown75">
-			<label for="unknown75">76</label>
-			<audio id="audiounknown75" src="tracks/unknown76.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown76" name="unknown76">
-			<label for="unknown76">77</label>
-			<audio id="audiounknown76" src="tracks/unknown77.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown77" name="unknown77">
-			<label for="unknown77">78</label>
-			<audio id="audiounknown77" src="tracks/unknown78.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown78" name="unknown78">
-			<label for="unknown78">79</label>
-			<audio id="audiounknown78" src="tracks/unknown79.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown79" name="unknown79">
-			<label for="unknown79">80</label>
-			<audio id="audiounknown79" src="tracks/unknown80.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown80" name="unknown80">
-			<label for="unknown80">81</label>
-			<audio id="audiounknown80" src="tracks/unknown81.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown81" name="unknown81">
-			<label for="unknown81">82</label>
-			<audio id="audiounknown81" src="tracks/unknown82.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown82" name="unknown82">
-			<label for="unknown82">83</label>
-			<audio id="audiounknown82" src="tracks/unknown83.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown83" name="unknown83">
-			<label for="unknown83">84</label>
-			<audio id="audiounknown83" src="tracks/unknown84.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown84" name="unknown84">
-			<label for="unknown84">85</label>
-			<audio id="audiounknown84" src="tracks/unknown85.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown85" name="unknown85">
-			<label for="unknown85">86</label>
-			<audio id="audiounknown85" src="tracks/unknown86.ogg" preload="auto"></audio>
-				
-			<input type="checkbox" id="unknown86" name="unknown86">
-			<label for="unknown86">87</label>
-			<audio id="audiounknown86" src="tracks/unknown87.ogg" preload="auto"></audio>
-
-    	</div>
+    <div class="trait-container">
+        <div class="trait">
+            <img src="icon/kda.png" alt="KDA">
+            <h3>KDA</h3>
+            <input type="checkbox" id="KDA1" name="KDA1">
+            <label for="KDA1">KDA 1</label>
+            <audio id="audioKDA1" src="tracks/kda1.ogg" preload="auto"></audio>
+        </div>
+        <div class="trait">
+            <img src="icon/punk.png" alt="Punk">
+            <h3>Punk</h3>
+            <input type="checkbox" id="Punk3" name="Punk3">
+            <label for="Punk3">Punk 3</label>
+            <audio id="audioPunk3" src="tracks/punk3.ogg" preload="auto"></audio>
+        </div>
+        <div class="trait">
+            <img src="icon/maestro.png" alt="Maestro">
+            <h3>Maestro</h3>
+            <input type="checkbox" id="Maestro3" name="Maestro3">
+            <label for="Maestro3">Maestro 3???</label>
+            <audio id="audioMaestro3" src="tracks/maestro3.ogg" preload="auto"></audio>
+        </div>
+        <div class="trait">
+            <img src="icon/8bit.png" alt="8bit">
+            <h3>8 Bit</h3>
+            <input type="checkbox" id="8bit4" name="8bit4">
+            <label for="8bit4">8-Bit 4???</label>
+            <audio id="audio8bit4" src="tracks/8bit4.ogg" preload="auto"></audio>
+        </div>
+    </div>
+    <h2>UNKNOWN</h2>
+            <div class="trait">
+            <h3>Unknown Tracks</h3>
+            <h2>Please help find these tracks by opening a PR or issue on <a href="https://github.com/OfficiallySp/tftmixer">The Github Repo</a></h2><input type="checkbox" id="8bit_drums." name="8bit_drums.">
+    <label for="unknown1">8bit_drums.</label>
+    <audio id="audio8bit_drums." src="tracks/8bit_drums.ogg" preload="auto"></audio><input type="checkbox" id="8bit_drums_early (2)." name="8bit_drums_early (2).">
+    <label for="unknown1">8bit_drums_early (2).</label>
+    <audio id="audio8bit_drums_early (2)." src="tracks/8bit_drums_early (2).ogg" preload="auto"></audio><input type="checkbox" id="8bit_drums_early." name="8bit_drums_early.">
+    <label for="unknown1">8bit_drums_early.</label>
+    <audio id="audio8bit_drums_early." src="tracks/8bit_drums_early.ogg" preload="auto"></audio><input type="checkbox" id="8bit_main_early." name="8bit_main_early.">
+    <label for="unknown1">8bit_main_early.</label>
+    <audio id="audio8bit_main_early." src="tracks/8bit_main_early.ogg" preload="auto"></audio><input type="checkbox" id="8bit_secondary_late (2)." name="8bit_secondary_late (2).">
+    <label for="unknown1">8bit_secondary_late (2).</label>
+    <audio id="audio8bit_secondary_late (2)." src="tracks/8bit_secondary_late (2).ogg" preload="auto"></audio><input type="checkbox" id="8bit_secondary_late." name="8bit_secondary_late.">
+    <label for="unknown1">8bit_secondary_late.</label>
+    <audio id="audio8bit_secondary_late." src="tracks/8bit_secondary_late.ogg" preload="auto"></audio><input type="checkbox" id="country_drums (2)." name="country_drums (2).">
+    <label for="unknown1">country_drums (2).</label>
+    <audio id="audiocountry_drums (2)." src="tracks/country_drums (2).ogg" preload="auto"></audio><input type="checkbox" id="country_drums." name="country_drums.">
+    <label for="unknown1">country_drums.</label>
+    <audio id="audiocountry_drums." src="tracks/country_drums.ogg" preload="auto"></audio><input type="checkbox" id="country_drums_late." name="country_drums_late.">
+    <label for="unknown1">country_drums_late.</label>
+    <audio id="audiocountry_drums_late." src="tracks/country_drums_late.ogg" preload="auto"></audio><input type="checkbox" id="country_main_early." name="country_main_early.">
+    <label for="unknown1">country_main_early.</label>
+    <audio id="audiocountry_main_early." src="tracks/country_main_early.ogg" preload="auto"></audio><input type="checkbox" id="country_secondary_late (2)." name="country_secondary_late (2).">
+    <label for="unknown1">country_secondary_late (2).</label>
+    <audio id="audiocountry_secondary_late (2)." src="tracks/country_secondary_late (2).ogg" preload="auto"></audio><input type="checkbox" id="country_secondary_late." name="country_secondary_late.">
+    <label for="unknown1">country_secondary_late.</label>
+    <audio id="audiocountry_secondary_late." src="tracks/country_secondary_late.ogg" preload="auto"></audio><input type="checkbox" id="disco_drums_early." name="disco_drums_early.">
+    <label for="unknown1">disco_drums_early.</label>
+    <audio id="audiodisco_drums_early." src="tracks/disco_drums_early.ogg" preload="auto"></audio><input type="checkbox" id="disco_drums_late." name="disco_drums_late.">
+    <label for="unknown1">disco_drums_late.</label>
+    <audio id="audiodisco_drums_late." src="tracks/disco_drums_late.ogg" preload="auto"></audio><input type="checkbox" id="disco_main_early." name="disco_main_early.">
+    <label for="unknown1">disco_main_early.</label>
+    <audio id="audiodisco_main_early." src="tracks/disco_main_early.ogg" preload="auto"></audio><input type="checkbox" id="disco_main_late (2)." name="disco_main_late (2).">
+    <label for="unknown1">disco_main_late (2).</label>
+    <audio id="audiodisco_main_late (2)." src="tracks/disco_main_late (2).ogg" preload="auto"></audio><input type="checkbox" id="disco_main_late." name="disco_main_late.">
+    <label for="unknown1">disco_main_late.</label>
+    <audio id="audiodisco_main_late." src="tracks/disco_main_late.ogg" preload="auto"></audio><input type="checkbox" id="drumsidk1." name="drumsidk1.">
+    <label for="unknown1">drumsidk1.</label>
+    <audio id="audiodrumsidk1." src="tracks/drumsidk1.ogg" preload="auto"></audio><input type="checkbox" id="drumsidk10." name="drumsidk10.">
+    <label for="unknown1">drumsidk10.</label>
+    <audio id="audiodrumsidk10." src="tracks/drumsidk10.ogg" preload="auto"></audio><input type="checkbox" id="drumsidk11." name="drumsidk11.">
+    <label for="unknown1">drumsidk11.</label>
+    <audio id="audiodrumsidk11." src="tracks/drumsidk11.ogg" preload="auto"></audio><input type="checkbox" id="drumsidk2." name="drumsidk2.">
+    <label for="unknown1">drumsidk2.</label>
+    <audio id="audiodrumsidk2." src="tracks/drumsidk2.ogg" preload="auto"></audio><input type="checkbox" id="drumsidk3." name="drumsidk3.">
+    <label for="unknown1">drumsidk3.</label>
+    <audio id="audiodrumsidk3." src="tracks/drumsidk3.ogg" preload="auto"></audio><input type="checkbox" id="drumsidk4." name="drumsidk4.">
+    <label for="unknown1">drumsidk4.</label>
+    <audio id="audiodrumsidk4." src="tracks/drumsidk4.ogg" preload="auto"></audio><input type="checkbox" id="drumsidk5." name="drumsidk5.">
+    <label for="unknown1">drumsidk5.</label>
+    <audio id="audiodrumsidk5." src="tracks/drumsidk5.ogg" preload="auto"></audio><input type="checkbox" id="drumsidk6." name="drumsidk6.">
+    <label for="unknown1">drumsidk6.</label>
+    <audio id="audiodrumsidk6." src="tracks/drumsidk6.ogg" preload="auto"></audio><input type="checkbox" id="drumsidk7." name="drumsidk7.">
+    <label for="unknown1">drumsidk7.</label>
+    <audio id="audiodrumsidk7." src="tracks/drumsidk7.ogg" preload="auto"></audio><input type="checkbox" id="drumsidk8." name="drumsidk8.">
+    <label for="unknown1">drumsidk8.</label>
+    <audio id="audiodrumsidk8." src="tracks/drumsidk8.ogg" preload="auto"></audio><input type="checkbox" id="drumsidk9." name="drumsidk9.">
+    <label for="unknown1">drumsidk9.</label>
+    <audio id="audiodrumsidk9." src="tracks/drumsidk9.ogg" preload="auto"></audio><input type="checkbox" id="edm_drums_late (2)." name="edm_drums_late (2).">
+    <label for="unknown1">edm_drums_late (2).</label>
+    <audio id="audioedm_drums_late (2)." src="tracks/edm_drums_late (2).ogg" preload="auto"></audio><input type="checkbox" id="edm_drums_late." name="edm_drums_late.">
+    <label for="unknown1">edm_drums_late.</label>
+    <audio id="audioedm_drums_late." src="tracks/edm_drums_late.ogg" preload="auto"></audio><input type="checkbox" id="edm_secondary_early (2)." name="edm_secondary_early (2).">
+    <label for="unknown1">edm_secondary_early (2).</label>
+    <audio id="audioedm_secondary_early (2)." src="tracks/edm_secondary_early (2).ogg" preload="auto"></audio><input type="checkbox" id="emo_main_early." name="emo_main_early.">
+    <label for="unknown1">emo_main_early.</label>
+    <audio id="audioemo_main_early." src="tracks/emo_main_early.ogg" preload="auto"></audio><input type="checkbox" id="emo_main_late (2)." name="emo_main_late (2).">
+    <label for="unknown1">emo_main_late (2).</label>
+    <audio id="audioemo_main_late (2)." src="tracks/emo_main_late (2).ogg" preload="auto"></audio><input type="checkbox" id="emo_main_late." name="emo_main_late.">
+    <label for="unknown1">emo_main_late.</label>
+    <audio id="audioemo_main_late." src="tracks/emo_main_late.ogg" preload="auto"></audio><input type="checkbox" id="emo_secondary_early." name="emo_secondary_early.">
+    <label for="unknown1">emo_secondary_early.</label>
+    <audio id="audioemo_secondary_early." src="tracks/emo_secondary_early.ogg" preload="auto"></audio><input type="checkbox" id="heartsteel_drums_early." name="heartsteel_drums_early.">
+    <label for="unknown1">heartsteel_drums_early.</label>
+    <audio id="audioheartsteel_drums_early." src="tracks/heartsteel_drums_early.ogg" preload="auto"></audio><input type="checkbox" id="heartsteel_drums_late (2)." name="heartsteel_drums_late (2).">
+    <label for="unknown1">heartsteel_drums_late (2).</label>
+    <audio id="audioheartsteel_drums_late (2)." src="tracks/heartsteel_drums_late (2).ogg" preload="auto"></audio><input type="checkbox" id="heartsteel_drums_late." name="heartsteel_drums_late.">
+    <label for="unknown1">heartsteel_drums_late.</label>
+    <audio id="audioheartsteel_drums_late." src="tracks/heartsteel_drums_late.ogg" preload="auto"></audio><input type="checkbox" id="heartsteel_drums_MAYBE." name="heartsteel_drums_MAYBE.">
+    <label for="unknown1">heartsteel_drums_MAYBE.</label>
+    <audio id="audioheartsteel_drums_MAYBE." src="tracks/heartsteel_drums_MAYBE.ogg" preload="auto"></audio><input type="checkbox" id="heartsteel_main_early." name="heartsteel_main_early.">
+    <label for="unknown1">heartsteel_main_early.</label>
+    <audio id="audioheartsteel_main_early." src="tracks/heartsteel_main_early.ogg" preload="auto"></audio><input type="checkbox" id="heartsteel_main_late." name="heartsteel_main_late.">
+    <label for="unknown1">heartsteel_main_late.</label>
+    <audio id="audioheartsteel_main_late." src="tracks/heartsteel_main_late.ogg" preload="auto"></audio><input type="checkbox" id="heartsteel_main_secondary." name="heartsteel_main_secondary.">
+    <label for="unknown1">heartsteel_main_secondary.</label>
+    <audio id="audioheartsteel_main_secondary." src="tracks/heartsteel_main_secondary.ogg" preload="auto"></audio><input type="checkbox" id="heartsteel_secondary_late (2)." name="heartsteel_secondary_late (2).">
+    <label for="unknown1">heartsteel_secondary_late (2).</label>
+    <audio id="audioheartsteel_secondary_late (2)." src="tracks/heartsteel_secondary_late (2).ogg" preload="auto"></audio><input type="checkbox" id="heartsteel_secondary_late (3)." name="heartsteel_secondary_late (3).">
+    <label for="unknown1">heartsteel_secondary_late (3).</label>
+    <audio id="audioheartsteel_secondary_late (3)." src="tracks/heartsteel_secondary_late (3).ogg" preload="auto"></audio><input type="checkbox" id="heartsteel_secondary_late." name="heartsteel_secondary_late.">
+    <label for="unknown1">heartsteel_secondary_late.</label>
+    <audio id="audioheartsteel_secondary_late." src="tracks/heartsteel_secondary_late.ogg" preload="auto"></audio><input type="checkbox" id="hyperpop_early." name="hyperpop_early.">
+    <label for="unknown1">hyperpop_early.</label>
+    <audio id="audiohyperpop_early." src="tracks/hyperpop_early.ogg" preload="auto"></audio><input type="checkbox" id="hyperpop_late (2)." name="hyperpop_late (2).">
+    <label for="unknown1">hyperpop_late (2).</label>
+    <audio id="audiohyperpop_late (2)." src="tracks/hyperpop_late (2).ogg" preload="auto"></audio><input type="checkbox" id="hyperpop_late." name="hyperpop_late.">
+    <label for="unknown1">hyperpop_late.</label>
+    <audio id="audiohyperpop_late." src="tracks/hyperpop_late.ogg" preload="auto"></audio><input type="checkbox" id="illbeats_early." name="illbeats_early.">
+    <label for="unknown1">illbeats_early.</label>
+    <audio id="audioillbeats_early." src="tracks/illbeats_early.ogg" preload="auto"></audio><input type="checkbox" id="jazz_main_early." name="jazz_main_early.">
+    <label for="unknown1">jazz_main_early.</label>
+    <audio id="audiojazz_main_early." src="tracks/jazz_main_early.ogg" preload="auto"></audio><input type="checkbox" id="jazz_main_late (2)." name="jazz_main_late (2).">
+    <label for="unknown1">jazz_main_late (2).</label>
+    <audio id="audiojazz_main_late (2)." src="tracks/jazz_main_late (2).ogg" preload="auto"></audio><input type="checkbox" id="jazz_main_late." name="jazz_main_late.">
+    <label for="unknown1">jazz_main_late.</label>
+    <audio id="audiojazz_main_late." src="tracks/jazz_main_late.ogg" preload="auto"></audio><input type="checkbox" id="kda1." name="kda1.">
+    <label for="unknown1">kda1.</label>
+    <audio id="audiokda1." src="tracks/kda1.ogg" preload="auto"></audio><input type="checkbox" id="kda_drums_early." name="kda_drums_early.">
+    <label for="unknown1">kda_drums_early.</label>
+    <audio id="audiokda_drums_early." src="tracks/kda_drums_early.ogg" preload="auto"></audio><input type="checkbox" id="kda_drums_late." name="kda_drums_late.">
+    <label for="unknown1">kda_drums_late.</label>
+    <audio id="audiokda_drums_late." src="tracks/kda_drums_late.ogg" preload="auto"></audio><input type="checkbox" id="kda_drums_MAYBE." name="kda_drums_MAYBE.">
+    <label for="unknown1">kda_drums_MAYBE.</label>
+    <audio id="audiokda_drums_MAYBE." src="tracks/kda_drums_MAYBE.ogg" preload="auto"></audio><input type="checkbox" id="kda_main_late (2)." name="kda_main_late (2).">
+    <label for="unknown1">kda_main_late (2).</label>
+    <audio id="audiokda_main_late (2)." src="tracks/kda_main_late (2).ogg" preload="auto"></audio><input type="checkbox" id="kda_main_late." name="kda_main_late.">
+    <label for="unknown1">kda_main_late.</label>
+    <audio id="audiokda_main_late." src="tracks/kda_main_late.ogg" preload="auto"></audio><input type="checkbox" id="kda_secondary_early (2)." name="kda_secondary_early (2).">
+    <label for="unknown1">kda_secondary_early (2).</label>
+    <audio id="audiokda_secondary_early (2)." src="tracks/kda_secondary_early (2).ogg" preload="auto"></audio><input type="checkbox" id="kda_secondary_early." name="kda_secondary_early.">
+    <label for="unknown1">kda_secondary_early.</label>
+    <audio id="audiokda_secondary_early." src="tracks/kda_secondary_early.ogg" preload="auto"></audio><input type="checkbox" id="kda_secondary_late." name="kda_secondary_late.">
+    <label for="unknown1">kda_secondary_late.</label>
+    <audio id="audiokda_secondary_late." src="tracks/kda_secondary_late.ogg" preload="auto"></audio><input type="checkbox" id="lobby (2)." name="lobby (2).">
+    <label for="unknown1">lobby (2).</label>
+    <audio id="audiolobby (2)." src="tracks/lobby (2).ogg" preload="auto"></audio><input type="checkbox" id="lobby." name="lobby.">
+    <label for="unknown1">lobby.</label>
+    <audio id="audiolobby." src="tracks/lobby.ogg" preload="auto"></audio><input type="checkbox" id="maestro_early." name="maestro_early.">
+    <label for="unknown1">maestro_early.</label>
+    <audio id="audiomaestro_early." src="tracks/maestro_early.ogg" preload="auto"></audio><input type="checkbox" id="maestro_late (2)." name="maestro_late (2).">
+    <label for="unknown1">maestro_late (2).</label>
+    <audio id="audiomaestro_late (2)." src="tracks/maestro_late (2).ogg" preload="auto"></audio><input type="checkbox" id="maestro_late." name="maestro_late.">
+    <label for="unknown1">maestro_late.</label>
+    <audio id="audiomaestro_late." src="tracks/maestro_late.ogg" preload="auto"></audio><input type="checkbox" id="mixmaster_early again." name="mixmaster_early again.">
+    <label for="unknown1">mixmaster_early again.</label>
+    <audio id="audiomixmaster_early again." src="tracks/mixmaster_early again.ogg" preload="auto"></audio><input type="checkbox" id="mixmaster_early." name="mixmaster_early.">
+    <label for="unknown1">mixmaster_early.</label>
+    <audio id="audiomixmaster_early." src="tracks/mixmaster_early.ogg" preload="auto"></audio><input type="checkbox" id="mixmaster_late." name="mixmaster_late.">
+    <label for="unknown1">mixmaster_late.</label>
+    <audio id="audiomixmaster_late." src="tracks/mixmaster_late.ogg" preload="auto"></audio><input type="checkbox" id="pentakill_drums." name="pentakill_drums.">
+    <label for="unknown1">pentakill_drums.</label>
+    <audio id="audiopentakill_drums." src="tracks/pentakill_drums.ogg" preload="auto"></audio><input type="checkbox" id="pentakill_drums_early (2)." name="pentakill_drums_early (2).">
+    <label for="unknown1">pentakill_drums_early (2).</label>
+    <audio id="audiopentakill_drums_early (2)." src="tracks/pentakill_drums_early (2).ogg" preload="auto"></audio><input type="checkbox" id="pentakill_drums_early." name="pentakill_drums_early.">
+    <label for="unknown1">pentakill_drums_early.</label>
+    <audio id="audiopentakill_drums_early." src="tracks/pentakill_drums_early.ogg" preload="auto"></audio><input type="checkbox" id="pentakill_main_early." name="pentakill_main_early.">
+    <label for="unknown1">pentakill_main_early.</label>
+    <audio id="audiopentakill_main_early." src="tracks/pentakill_main_early.ogg" preload="auto"></audio><input type="checkbox" id="pentakill_main_late (2)." name="pentakill_main_late (2).">
+    <label for="unknown1">pentakill_main_late (2).</label>
+    <audio id="audiopentakill_main_late (2)." src="tracks/pentakill_main_late (2).ogg" preload="auto"></audio><input type="checkbox" id="pentakill_main_late." name="pentakill_main_late.">
+    <label for="unknown1">pentakill_main_late.</label>
+    <audio id="audiopentakill_main_late." src="tracks/pentakill_main_late.ogg" preload="auto"></audio><input type="checkbox" id="pentakill_secondary." name="pentakill_secondary.">
+    <label for="unknown1">pentakill_secondary.</label>
+    <audio id="audiopentakill_secondary." src="tracks/pentakill_secondary.ogg" preload="auto"></audio><input type="checkbox" id="pentakill_secondary_early." name="pentakill_secondary_early.">
+    <label for="unknown1">pentakill_secondary_early.</label>
+    <audio id="audiopentakill_secondary_early." src="tracks/pentakill_secondary_early.ogg" preload="auto"></audio><input type="checkbox" id="pentakill_secondary_late." name="pentakill_secondary_late.">
+    <label for="unknown1">pentakill_secondary_late.</label>
+    <audio id="audiopentakill_secondary_late." src="tracks/pentakill_secondary_late.ogg" preload="auto"></audio><input type="checkbox" id="piano_early." name="piano_early.">
+    <label for="unknown1">piano_early.</label>
+    <audio id="audiopiano_early." src="tracks/piano_early.ogg" preload="auto"></audio><input type="checkbox" id="piano_late (2)." name="piano_late (2).">
+    <label for="unknown1">piano_late (2).</label>
+    <audio id="audiopiano_late (2)." src="tracks/piano_late (2).ogg" preload="auto"></audio><input type="checkbox" id="piano_late." name="piano_late.">
+    <label for="unknown1">piano_late.</label>
+    <audio id="audiopiano_late." src="tracks/piano_late.ogg" preload="auto"></audio><input type="checkbox" id="punk_main_early." name="punk_main_early.">
+    <label for="unknown1">punk_main_early.</label>
+    <audio id="audiopunk_main_early." src="tracks/punk_main_early.ogg" preload="auto"></audio><input type="checkbox" id="punk_main_late (2)." name="punk_main_late (2).">
+    <label for="unknown1">punk_main_late (2).</label>
+    <audio id="audiopunk_main_late (2)." src="tracks/punk_main_late (2).ogg" preload="auto"></audio><input type="checkbox" id="punk_main_late." name="punk_main_late.">
+    <label for="unknown1">punk_main_late.</label>
+    <audio id="audiopunk_main_late." src="tracks/punk_main_late.ogg" preload="auto"></audio><input type="checkbox" id="starting_carousel." name="starting_carousel.">
+    <label for="unknown1">starting_carousel.</label>
+    <audio id="audiostarting_carousel." src="tracks/starting_carousel.ogg" preload="auto"></audio><input type="checkbox" id="truedamage_drums_early." name="truedamage_drums_early.">
+    <label for="unknown1">truedamage_drums_early.</label>
+    <audio id="audiotruedamage_drums_early." src="tracks/truedamage_drums_early.ogg" preload="auto"></audio><input type="checkbox" id="truedamage_drums_late (2)." name="truedamage_drums_late (2).">
+    <label for="unknown1">truedamage_drums_late (2).</label>
+    <audio id="audiotruedamage_drums_late (2)." src="tracks/truedamage_drums_late (2).ogg" preload="auto"></audio><input type="checkbox" id="truedamage_drums_late." name="truedamage_drums_late.">
+    <label for="unknown1">truedamage_drums_late.</label>
+    <audio id="audiotruedamage_drums_late." src="tracks/truedamage_drums_late.ogg" preload="auto"></audio><input type="checkbox" id="truedamage_main_late." name="truedamage_main_late.">
+    <label for="unknown1">truedamage_main_late.</label>
+    <audio id="audiotruedamage_main_late." src="tracks/truedamage_main_late.ogg" preload="auto"></audio><input type="checkbox" id="truedamage_secondary_early." name="truedamage_secondary_early.">
+    <label for="unknown1">truedamage_secondary_early.</label>
+    <audio id="audiotruedamage_secondary_early." src="tracks/truedamage_secondary_early.ogg" preload="auto"></audio><input type="checkbox" id="truedamage_secondary_late." name="truedamage_secondary_late.">
+    <label for="unknown1">truedamage_secondary_late.</label>
+    <audio id="audiotruedamage_secondary_late." src="tracks/truedamage_secondary_late.ogg" preload="auto"></audio></div>
     <button onclick="playSelectedTracks()">Play Selected Tracks</button>
     <button onclick="stopAllTracks()">Stop All Music</button>
     <script src="script.js"></script>
@@ -469,4 +302,3 @@
 <h3>©️ Shane Pepperell 2023</h3>
 </body>
 </html>
-
