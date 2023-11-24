@@ -415,10 +415,14 @@
         <label for="death6">Death 6</label>
         <audio id="audiodeath6." src="tracks/death6.ogg" preload="none"></audio>
 	</div>
-    <button onclick="playSelectedTracks()">Play Selected Tracks</button>
-    <button onclick="stopAllTracks()">Stop All Music</button>
-	<button onclick="randomSelectTracks()">Random Select Tracks</button>
-	<button onclick="clearAllSelections()">Clear All Selections</button>
+    <button class="btn btn-success" onclick="playSelectedTracks()">Play Selected Tracks</button>
+    <button class="btn btn-secondary" onclick="stopAllTracks()">Stop All Music</button>
+	<button class="btn btn-primary" onclick="randomSelectTracks()">Random Select Tracks</button>
+	<button class="btn btn-danger" onclick="clearAllSelections()">Clear All Selections</button>
+	<button class="btn btn-info" onclick="generateShareableLink()">Generate Shareable Link</button>
+<div class="alert alert-success" id="copyNotification" style="display:none; position: fixed; bottom: 20px; right: 20px;">
+    URL Copied to Clipboard
+</div>
     <script src="script.js"></script>
     <hr>
     <h3>Created by <a href="https://officiallysp.net">OfficiallySp</a></h3>
