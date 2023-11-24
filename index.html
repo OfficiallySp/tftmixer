@@ -409,6 +409,22 @@
     <h3>Created by <a href="https://officiallysp.net">OfficiallySp</a></h3>
     <h3>TFT / LoL universe made by <a href="https://www.riotgames.com/en">Riot Games</a></h3>
     <h3>©️ Shane Pepperell 2023</h3>
+<div id="navbar-placeholder"></div>
+<script>
+  function loadNavbar() {
+    const navbarPlaceholder = document.getElementById('navbar-placeholder');
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        navbarPlaceholder.innerHTML = this.responseText;
+      }
+    };
+    xhr.open('GET', 'https://officiallysp.net/navbar.html', true);
+    xhr.send();
+  }
+
+  window.onload = loadNavbar;
+</script>
 </body>
 
 </html>
