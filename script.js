@@ -54,19 +54,30 @@ function generateShareableLink() {
     var url = window.location.href.split('?')[0];
     url += '?selectedTracks=' + selectedTracks.join(',');
 
-     navigator.clipboard.writeText(url).then(function() {
-        var notification = document.getElementById("copyNotification");
-        notification.style.display = "block";
-        
-        setTimeout(function() {
-            notification.style.display = "none";
-        }, 3000);
+    navigator.clipboard.writeText(url).then(function() {
+        alert("Mix URL copied to clipboard!");
     })
     .catch(function(error) {
         console.error("Error copying URL: ", error);
     });
 }
 
+function tweetMix() {
+    var checkboxes = document.querySelectorAll('.trait input[type="checkbox"]');
+    var selectedTracks = [];
+
+    checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+            selectedTracks.push(checkbox.id);
+        }
+    });
+
+    var url = window.location.href.split('?')[0]; 
+    url += '?selectedTracks=' + selectedTracks.join(',');
+
+    var twitterUrl = 'https://twitter.com/intent/tweet?text=Check out my TFT remix rumble music mix!: ' + encodeURIComponent(url) + '&hashtags=TFT,TFTRemixRumble';
+    window.open(twitterUrl, '_blank').focus();
+}
 
 function setTracksFromURL() {
     var params = new URLSearchParams(window.location.search);
