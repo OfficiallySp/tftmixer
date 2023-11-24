@@ -16,3 +16,29 @@ function stopAllTracks() {
         allAudioElements[i].currentTime = 0;
     }
 }
+
+function setGlobalVolume(value) {
+    var allAudioElements = document.getElementsByTagName('audio');
+    for (var i = 0; i < allAudioElements.length; i++) {
+        allAudioElements[i].volume = value;
+    }
+}
+
+function randomSelectTracks() {
+    clearAllSelections(); // Clear existing selections first
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    var maxSelect = Math.min(5, checkboxes.length); // Maximum number of tracks to select, e.g., 5
+
+    // Randomly select up to maxSelect tracks
+    for (var i = 0; i < maxSelect; i++) {
+        var randomIndex = Math.floor(Math.random() * checkboxes.length);
+        checkboxes[randomIndex].checked = true;
+    }
+}
+
+function clearAllSelections() {
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = false;
+    }
+}
