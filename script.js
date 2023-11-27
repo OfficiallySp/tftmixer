@@ -81,7 +81,7 @@ function tweetMix() {
 
 function setTracksFromURL() {
     var params = new URLSearchParams(window.location.search);
-    var selectedTracks = params.get('selectedTracks');
+    var selectedTracks = params.get('selectedTracks' + ',');
 
     if (selectedTracks) {
         selectedTracks.split(',').forEach(function(trackId) {
