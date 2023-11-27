@@ -52,7 +52,7 @@ function generateShareableLink() {
     });
 
     var url = window.location.href.split('?')[0];
-    url += '?selectedTracks=' + selectedTracks.join(',');
+    url += '?selectedTracks=' + selectedTracks.join(',') + ',';
 
     navigator.clipboard.writeText(url).then(function() {
         alert("Mix URL copied to clipboard!");
@@ -81,7 +81,7 @@ function tweetMix() {
 
 function setTracksFromURL() {
     var params = new URLSearchParams(window.location.search);
-    var selectedTracks = params.get('selectedTracks' + ',');
+    var selectedTracks = params.get('selectedTracks');
 
     if (selectedTracks) {
         selectedTracks.split(',').forEach(function(trackId) {
