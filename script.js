@@ -5,6 +5,8 @@ var audioGainArray = [];
 
 function playSelectedTracks() {
     stopAllTracks();
+	// Show loading indicator
+    document.getElementById('loadingIndicator').style.display = 'block';
     var playlist = [];
     sourceArray = [];
     audioGainArray = [];
@@ -46,11 +48,13 @@ function playSelectedTracks() {
             sourceArray.push(source);
             audioGainArray.push(gainNode);
 	        gainNode.gain.setValueAtTime(currentGlobalVolume, context.currentTime);
+			document.getElementById('loadingIndicator').style.display = 'none';
         });
     })();
 }
 
 function stopAllTracks() {
+	document.getElementById('loadingIndicator').style.display = 'none'
     for (var i = 0; i < sourceArray.length; i++) {
         sourceArray[i].stop();
     }

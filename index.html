@@ -340,6 +340,11 @@
         <label for="death6">Death 6</label>
         <audio id="audiodeath6." src="tracks/death6.ogg" preload="none" loop></audio>
     </div>
+	<div id="loadingIndicator" class="text-center" style="display: none;">
+		<div class="spinner-border text-primary" role="status">
+			<span class="visually-hidden">Loading Tracks...</span>
+		</div>
+	</div>
     <button class="btn btn-success" onclick="playSelectedTracks()">Play Selected Tracks</button>
     <button class="btn btn-secondary" onclick="stopAllTracks()">Stop All Music</button>
     <button class="btn btn-warning" onclick="randomSelectTracks()">Random Select Tracks</button>
