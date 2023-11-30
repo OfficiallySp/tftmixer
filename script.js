@@ -7,6 +7,9 @@ function playSelectedTracks() {
     stopAllTracks();
     var playlist = [];
     sourceArray = [];
+    audioGainArray = [];
+
+    var currentGlobalVolume = getGlobalVolume(); // Get the current global volume
     for (var i = 0; i < tracks.length; i++) {
         if (document.getElementById(tracks[i]).checked) {
             playlist.push("tracks/" + tracks[i] + "ogg");
@@ -42,6 +45,7 @@ function playSelectedTracks() {
             gainNode.connect(context.destination);
             sourceArray.push(source);
             audioGainArray.push(gainNode);
+	        gainNode.gain.setValueAtTime(currentGlobalVolume, context.currentTime);
         });
     })();
 }
@@ -50,6 +54,10 @@ function stopAllTracks() {
     for (var i = 0; i < sourceArray.length; i++) {
         sourceArray[i].stop();
     }
+}
+
+function getGlobalVolume() {
+    return document.getElementById('globalVolume').valueAsNumber || 1; // Default to 1 if not set
 }
 
 function setGlobalVolume(value) {
