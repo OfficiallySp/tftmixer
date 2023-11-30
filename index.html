@@ -5,7 +5,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1548903334937961" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <title>TFT Remix Rumble Music Mixer</title>
 </head>
 
@@ -17,16 +17,18 @@
     <div class="alert alert-info">
         <strong>Mobile Support</strong><br>
         Unfortunately as of now. this page will not work on a mobile device. Please switch to a desktop browser client in the meantime. Report any issues and feature suggestions to the <a href="https://github.com/OfficiallySp/tftmixer"><strong>GitHub repository</strong></a>
-	</div>
+    </div>
     <div>
-        <label for="globalVolume"><strong><h4>Global Volume:</h4></strong></label>
+        <label for="globalVolume"><strong>
+                <h4>Global Volume:</h4>
+            </strong></label>
         <input type="range" id="globalVolume" name="volume" min="-1" max="0" step="0.01" value="0" onchange="setGlobalVolume(this.value)">
     </div>
-	<div id="loadingIndicator" class="text-center" style="display: none;">
-		<div class="spinner-border text-primary" role="status">
-			<span class="visually-hidden">Loading Tracks...</span>
-		</div>
-	</div>
+    <div id="loadingIndicator" class="text-center" style="display: none;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading Tracks...</span>
+        </div>
+    </div>
     <button class="btn btn-success" onclick="playSelectedTracks()">Play Selected Tracks</button>
     <button class="btn btn-secondary" onclick="stopAllTracks()">Stop All Music</button>
     <button class="btn btn-warning" onclick="randomSelectTracks()">Random Select Tracks</button>
@@ -36,7 +38,7 @@
     <div class="alert alert-success" id="copyNotification" style="display:none; position: fixed; bottom: 20px; right: 20px;">
         <strong>URL Copied to Clipboard</strong>
     </div>
-	<hr>
+    <hr>
     <div class="trait-container">
         <div class="trait">
             <img src="icon/kda.png" alt="KDA">
