@@ -7,55 +7,68 @@ function playSelectedTracks() {
     stopAllTracks();
     var playlist = [];
     sourceArray = [];
+    audioGainArray = [];
+
+    var globalVolume = document.getElementById('globalVolume').value; // Get the global volume
+
     for (var i = 0; i < tracks.length; i++) {
         if (document.getElementById(tracks[i]).checked) {
             playlist.push("tracks/" + tracks[i] + "ogg");
         }
     }
+
     (async () => {
         const urls = playlist;
         // first, fetch each file's data
         const data_buffers = await Promise.all(
-            urls.map((url) => fetch(url).then((res) => res.arrayBuffer()))
+            urls.map(url => fetch(url).then(res => res.arrayBuffer()))
         );
         // get our AudioContext
         // decode the data
         const audio_buffers = await Promise.all(
-            data_buffers.map((buf) => context.decodeAudioData(buf))
+            data_buffers.map(buf => context.decodeAudioData(buf))
         );
-        // to enable the AudioContext we need to handle a user gesture
+
         const current_time = context.currentTime;
-        audio_buffers.forEach((buf) => {
-            // a buffer source is a really small object
+        audio_buffers.forEach(buf => {
+			// a buffer source is a really small object
             // don't be afraid of creating and throwing it
             const source = context.createBufferSource();
-            // we only connect the decoded data, it's not copied
+			// we only connect the decoded data, it's not copied
             source.buffer = buf;
-            // in order to make some noise
-            source.connect(context.destination);
+
+            const gainNode = context.createGain();
+            gainNode.gain.setValueAtTime(globalVolume, context.currentTime); // Set initial volume
+			// in order to make some noise
+            source.connect(gainNode);
+            gainNode.connect(context.destination);
             // make it loop?
             //source.loop = true;
             // start them all 0.25s after we began, so we're sure they're in sync
-            const gainNode = context.createGain();
             source.start(current_time + 0.25);
-            source.connect(gainNode);
-            gainNode.connect(context.destination);
+
             sourceArray.push(source);
             audioGainArray.push(gainNode);
         });
     })();
 }
 
+
 function stopAllTracks() {
-    for (var i = 0; i < sourceArray.length; i++) {
-        sourceArray[i].stop();
-    }
+    sourceArray.forEach(source => {
+        if (source) source.stop();
+    });
+
+    // Clear the arrays after stopping all tracks
+    sourceArray = [];
+    audioGainArray = [];
 }
 
+
 function setGlobalVolume(value) {
-    for (var i = 0; i < audioGainArray.length; i++) {
-        audioGainArray[i].gain.setValueAtTime(value, context.currentTime);
-    }
+    audioGainArray.forEach(gainNode => {
+        if (gainNode) gainNode.gain.setValueAtTime(value, context.currentTime);
+    });
 }
 
 function randomSelectTracks() {
