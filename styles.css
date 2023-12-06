@@ -69,6 +69,7 @@ button:hover {
     padding: 5px;
 }
 
-.trait label {
+.trait label,
+.toggle label {
     display: inline-flex;
 }

@@ -22,8 +22,12 @@
         <label for="globalVolume"><strong>
                 <h4>Global Volume:</h4>
             </strong></label>
-        <input type="range" id="globalVolume" name="volume" min="-1" max="0" step="0.01" value="0" onchange="setGlobalVolume(this.value)">
+        <input type="range" id="globalVolume" name="volume" min="0" max="1" step="0.01" value="1" oninput="setGlobalVolume(this.value)">
     </div>
+    <div class="toggle">
+        <input type="checkbox" id="realTime" onclick="stopAllTracks()"/>
+        <label for="realTime">Real Time Add/Remove Tracks (longer load on play) </label>
+      </div>
     <div id="loadingIndicator" class="text-center" style="display: none;">
         <div class="spinner-border text-primary" role="status">
             <span class="visually-hidden">Loading Tracks...</span>
