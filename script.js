@@ -2,6 +2,9 @@ const tracks = ['8bit_early_drums.', '8bit_early_main.', '8bit_late_drums.', '8b
 const context = new(window.AudioContext || window.webkitAudioContext)();
 var sourceArray = [];
 var audioGainArray = [];
+var activeTrackElements = [];
+var masterGainNode = null
+var initial = true;
 
 function playSelectedTracks() {
     stopAllTracks();
@@ -10,13 +13,25 @@ function playSelectedTracks() {
     var playlist = [];
     sourceArray = [];
     audioGainArray = [];
+    activeTrackElements = [];
 
     var currentGlobalVolume = getGlobalVolume(); // Get the current global volume
     for (var i = 0; i < tracks.length; i++) {
-        if (document.getElementById(tracks[i]).checked) {
+        // Hacky way to only add the listeners once bc they are annoying to remove 
+        // when using an anon func (but anon func makes indexing the tracks easy)
+        const trackElement = document.getElementById(tracks[i])
+        if (initial) {
+            const trackIndex = i;
+            trackElement.addEventListener('change', () => toggleTrackRealTime(trackIndex));
+        }
+        // Collect tracks to load (all if real time mode)
+        if (document.getElementById('realTime').checked || trackElement.checked) {
+            activeTrackElements.push(trackElement);
             playlist.push("tracks/" + tracks[i] + "ogg");
         }
     }
+    initial = false;
+
     (async () => {
         const urls = playlist;
         // first, fetch each file's data
@@ -30,31 +45,36 @@ function playSelectedTracks() {
         );
         // to enable the AudioContext we need to handle a user gesture
         const current_time = context.currentTime;
-        audio_buffers.forEach((buf) => {
+        masterGainNode = context.createGain();
+        masterGainNode.connect(context.destination);
+        masterGainNode.gain.setValueAtTime(currentGlobalVolume, context.currentTime);
+        audio_buffers.forEach((buf, i) => {
             // a buffer source is a really small object
             // don't be afraid of creating and throwing it
             const source = context.createBufferSource();
             // we only connect the decoded data, it's not copied
             source.buffer = buf;
-            // in order to make some noise
-            source.connect(context.destination);
             // make it loop?
             //source.loop = true;
             // start them all 0.25s after we began, so we're sure they're in sync
             const gainNode = context.createGain();
             source.start(current_time + 0.25);
             source.connect(gainNode);
-            gainNode.connect(context.destination);
+            gainNode.connect(masterGainNode);
             sourceArray.push(source);
             audioGainArray.push(gainNode);
-            gainNode.gain.setValueAtTime(currentGlobalVolume, context.currentTime);
+            gainNode.gain.setValueAtTime(activeTrackElements[i].checked ? 1 : 0, context.currentTime);
             document.getElementById('loadingIndicator').style.display = 'none';
         });
+        // Avoid appearing to infinite load when playing with no tracks selected
+        if (audio_buffers.length == 0) {
+            stopAllTracks();
+        }
     })();
 }
 
 function stopAllTracks() {
-    document.getElementById('loadingIndicator').style.display = 'none'
+    document.getElementById('loadingIndicator').style.display = 'none';
     for (var i = 0; i < sourceArray.length; i++) {
         sourceArray[i].stop();
     }
@@ -65,26 +85,38 @@ function getGlobalVolume() {
 }
 
 function setGlobalVolume(value) {
-    for (var i = 0; i < audioGainArray.length; i++) {
-        audioGainArray[i].gain.setValueAtTime(value, context.currentTime);
+    if (masterGainNode != null) {
+        masterGainNode.gain.setValueAtTime(value, context.currentTime);
+    }
+}
+
+function toggleTrackRealTime(trackIndex) {
+    if (document.getElementById('realTime').checked) {
+        const gainNode = audioGainArray[trackIndex];
+        if (gainNode != null) {
+            const track = activeTrackElements[trackIndex];
+            gainNode.gain.setValueAtTime(track.checked ? 1 : 0, context.currentTime);
+        }
     }
 }
 
 function randomSelectTracks() {
     clearAllSelections();
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    var checkboxes = document.querySelectorAll('.trait input[type="checkbox"]');
     var maxSelect = Math.min(5, checkboxes.length);
 
     for (var i = 0; i < maxSelect; i++) {
         var randomIndex = Math.floor(Math.random() * checkboxes.length);
         checkboxes[randomIndex].checked = true;
+        checkboxes[randomIndex].dispatchEvent(new Event('change'))
     }
 }
 
 function clearAllSelections() {
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    var checkboxes = document.querySelectorAll('.trait input[type="checkbox"]');
     for (var i = 0; i < checkboxes.length; i++) {
         checkboxes[i].checked = false;
+        checkboxes[i].dispatchEvent(new Event('change'))
     }
 }
 
