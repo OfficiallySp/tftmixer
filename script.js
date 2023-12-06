@@ -102,19 +102,21 @@ function toggleTrackRealTime(trackIndex) {
 
 function randomSelectTracks() {
     clearAllSelections();
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    var checkboxes = document.querySelectorAll('.trait input[type="checkbox"]');
     var maxSelect = Math.min(5, checkboxes.length);
 
     for (var i = 0; i < maxSelect; i++) {
         var randomIndex = Math.floor(Math.random() * checkboxes.length);
         checkboxes[randomIndex].checked = true;
+        checkboxes[randomIndex].dispatchEvent(new Event('change'))
     }
 }
 
 function clearAllSelections() {
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    var checkboxes = document.querySelectorAll('.trait input[type="checkbox"]');
     for (var i = 0; i < checkboxes.length; i++) {
         checkboxes[i].checked = false;
+        checkboxes[i].dispatchEvent(new Event('change'))
     }
 }
 
