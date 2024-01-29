@@ -100,9 +100,9 @@ function toggleTrackRealTime(trackIndex) {
     }
 }
 
-function randomSelectTracks() {
+function randomSelectTracks(trackSelector = '') {
     clearAllSelections();
-    var checkboxes = document.querySelectorAll('.trait input[type="checkbox"]');
+    var checkboxes = document.querySelectorAll('.trait input[type="checkbox"]' + trackSelector);
     var maxSelect = Math.min(5, checkboxes.length);
 
     for (var i = 0; i < maxSelect; i++) {
@@ -110,6 +110,14 @@ function randomSelectTracks() {
         checkboxes[randomIndex].checked = true;
         checkboxes[randomIndex].dispatchEvent(new Event('change'))
     }
+}
+
+function randomSelectEarlyTracks() {
+    randomSelectTracks('.early')
+}
+
+function randomSelectLateTracks() {
+    randomSelectTracks('.late')
 }
 
 function clearAllSelections() {

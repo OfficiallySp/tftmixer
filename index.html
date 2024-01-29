@@ -37,6 +37,8 @@
     <button class="btn btn-success" onclick="playSelectedTracks()">Play Selected Tracks</button>
     <button class="btn btn-secondary" onclick="stopAllTracks()">Stop All Music</button>
     <button class="btn btn-warning" onclick="randomSelectTracks()">Random Select Tracks</button>
+    <button class="btn btn-warning" onclick="randomSelectEarlyTracks()">Random Select Early Tracks</button>
+    <button class="btn btn-warning" onclick="randomSelectLateTracks()">Random Select Late Tracks</button>
     <button class="btn btn-danger" onclick="clearAllSelections()">Clear All Selections</button>
     <button onclick="generateShareableLink()" class="btn btn-info">Generate Shareable Link</button>
     <button onclick="tweetMix()" class="btn btn-primary"><i class="fab fa-twitter"></i> Tweet Mix</button>
@@ -48,281 +50,281 @@
         <div class="trait">
             <img src="icon/kda.png" alt="KDA">
             <h3>KDA</h3>
-            <input type="checkbox" id="kda_early_drums." name="kda_early_drums.">
+            <input type="checkbox" id="kda_early_drums." name="kda_early_drums." class="early">
             <label for="kda_early_drums.">early_drums</label>
             <audio id="audiokda_early_drums" src="tracks/kda_early_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="kda_early_main." name="kda_early_main.">
+            <input type="checkbox" id="kda_early_main." name="kda_early_main." class="early">
             <label for="kda_early_main.">early_main</label>
             <audio id="audiokda_early_main." src="tracks/kda_early_main.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="kda_early_secondary." name="kda_early_secondary.">
+            <input type="checkbox" id="kda_early_secondary." name="kda_early_secondary." class="early">
             <label for="kda_early_secondary.">early_secondary</label>
             <audio id="audiokda_early_secondary." src="tracks/kda_early_secondary.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="kda_late_drums." name="kda_late_drums.">
+            <input type="checkbox" id="kda_late_drums." name="kda_late_drums." class="late">
             <label for="kda_late_drums.">late_drums</label>
             <audio id="audiokda_late_drums." src="tracks/kda_late_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="kda_late_main." name="kda_late_main.">
+            <input type="checkbox" id="kda_late_main." name="kda_late_main." class="late">
             <label for="kda_late_main.">late_main</label>
             <audio id="audiokda_late_main." src="tracks/kda_late_main.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="kda_late_secondary." name="kda_late_secondary.">
+            <input type="checkbox" id="kda_late_secondary." name="kda_late_secondary." class="late">
             <label for="kda_late_secondary.">late_secondary</label>
             <audio id="audiokda_late_secondary." src="tracks/kda_late_secondary.ogg" preload="none" loop></audio>
         </div>
         <div class="trait">
             <img src="icon/punk.png" alt="Punk">
             <h3>Punk</h3>
-            <input type="checkbox" id="punk_early_drums." name="punk_early_drums.">
+            <input type="checkbox" id="punk_early_drums." name="punk_early_drums." class="early">
             <label for="punk_early_drums.">early_drums</label>
             <audio id="audiopunk_early_drums." src="tracks/punk_early_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="punk_early_main." name="punk_early_main.">
+            <input type="checkbox" id="punk_early_main." name="punk_early_main." class="early">
             <label for="punk_early_main.">early_main</label>
             <audio id="audiopunk_early_main." src="tracks/punk_early_main.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="punk_late_drums." name="punk_late_drums.">
+            <input type="checkbox" id="punk_late_drums." name="punk_late_drums." class="late">
             <label for="punk_late_drums.">late_drums</label>
             <audio id="audiopunk_late_drums." src="tracks/punk_late_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="punk_late_main." name="punk_late_main.">
+            <input type="checkbox" id="punk_late_main." name="punk_late_main." class="late">
             <label for="punk_late_main.">late_main</label>
             <audio id="audiopunk_late_main." src="tracks/punk_late_main.ogg" preload="none" loop></audio>
         </div>
         <div class="trait">
             <img src="icon/maestro.png" alt="maestro">
             <h3>Maestro</h3>
-            <input type="checkbox" id="maestro_early." name="maestro_early.">
+            <input type="checkbox" id="maestro_early." name="maestro_early." class="early">
             <label for="maestro_early.">early</label>
             <audio id="audiomaestro_early." src="tracks/maestro_early.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="maestro_late." name="maestro_late.">
+            <input type="checkbox" id="maestro_late." name="maestro_late." class="late">
             <label for="maestro_late.">late</label>
             <audio id="audiomaestro_late." src="tracks/maestro_late.ogg" preload="none" loop></audio>
         </div>
         <div class="trait">
             <img src="icon/8bit.png" alt="8bit">
             <h3>8 Bit</h3>
-            <input type="checkbox" id="8bit_early_drums." name="8bit_early_drums.">
+            <input type="checkbox" id="8bit_early_drums." name="8bit_early_drums." class="early">
             <label for="8bit_early_drums.">early_drums</label>
             <audio id="audio8bit_early_drums." src="tracks/8bit_early_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="8bit_early_main." name="8bit_early_main.">
+            <input type="checkbox" id="8bit_early_main." name="8bit_early_main." class="early">
             <label for="8bit_early_main.">early_main</label>
             <audio id="audio8bit_early_main." src="tracks/8bit_early_main.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="8bit_late_drums." name="8bit_late_drums.">
+            <input type="checkbox" id="8bit_late_drums." name="8bit_late_drums." class="late">
             <label for="8bit_late_drums.">late_drums</label>
             <audio id="audio8bit_late_drums." src="tracks/8bit_late_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="8bit_late_main." name="8bit_late_main.">
+            <input type="checkbox" id="8bit_late_main." name="8bit_late_main." class="late">
             <label for="8bit_late_main.">late_main</label>
             <audio id="audio8bit_late_main." src="tracks/8bit_late_main.ogg" preload="none" loop></audio>
         </div>
         <div class="trait">
             <img src="icon/country.png" alt="8bit">
             <h3>Country</h3>
-            <input type="checkbox" id="country_early_drums." name="country_early_drums.">
+            <input type="checkbox" id="country_early_drums." name="country_early_drums." class="early">
             <label for="country_early_drums.">early_drums</label>
             <audio id="audiocountry_early_drums." src="tracks/country_early_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="country_early_main." name="country_early_main.">
+            <input type="checkbox" id="country_early_main." name="country_early_main." class="early">
             <label for="country_early_main.">early_main</label>
             <audio id="audiocountry_early_main." src="tracks/country_early_main.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="country_late_drums." name="country_late_drums.">
+            <input type="checkbox" id="country_late_drums." name="country_late_drums." class="late">
             <label for="country_late_drums.">late_drums</label>
             <audio id="audiocountry_late_drums." src="tracks/country_late_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="country_late_main." name="country_late_main.">
+            <input type="checkbox" id="country_late_main." name="country_late_main." class="late">
             <label for="country_late_main.">late_main</label>
             <audio id="audiocountry_late_main." src="tracks/country_late_main.ogg" preload="none" loop></audio>
         </div>
         <div class="trait">
             <img src="icon/disco.png" alt="disco">
             <h3>Disco</h3>
-            <input type="checkbox" id="disco_early_drums." name="disco_early_drums.">
+            <input type="checkbox" id="disco_early_drums." name="disco_early_drums." class="early">
             <label for="disco_early_drums.">early_drums</label>
             <audio id="audiodisco_early_drums." src="tracks/disco_early_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="disco_early_main." name="disco_early_main.">
+            <input type="checkbox" id="disco_early_main." name="disco_early_main." class="early">
             <label for="disco_early_main.">early_main</label>
             <audio id="audiodisco_early_main." src="tracks/disco_early_main.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="disco_late_drums." name="disco_late_drums.">
+            <input type="checkbox" id="disco_late_drums." name="disco_late_drums." class="late">
             <label for="disco_late_drums.">late_drums</label>
             <audio id="audiodisco_late_drums." src="tracks/disco_late_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="disco_late_main." name="disco_late_main.">
+            <input type="checkbox" id="disco_late_main." name="disco_late_main." class="late">
             <label for="disco_late_main.">late_main</label>
             <audio id="audiodisco_late_main." src="tracks/disco_late_main.ogg" preload="none" loop></audio>
         </div>
         <div class="trait">
             <img src="icon/edm.png" alt="EDM">
             <h3>EDM</h3>
-            <input type="checkbox" id="edm_early_drums." name="edm_early_drums.">
+            <input type="checkbox" id="edm_early_drums." name="edm_early_drums." class="early">
             <label for="edm_early_drums.">early_drums</label>
             <audio id="audioedm_early_drums." src="tracks/edm_early_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="edm_early_main." name="edm_early_main.">
+            <input type="checkbox" id="edm_early_main." name="edm_early_main." class="early">
             <label for="edm_early_main.">early_main</label>
             <audio id="audioedm_early_main." src="tracks/edm_early_main.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="edm_late_drums." name="edm_late_drums.">
+            <input type="checkbox" id="edm_late_drums." name="edm_late_drums." class="late">
             <label for="edm_late_drums.">late_drums</label>
             <audio id="audioedm_late_drums." src="tracks/edm_late_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="edm_late_main." name="edm_late_main.">
+            <input type="checkbox" id="edm_late_main." name="edm_late_main." class="late">
             <label for="edm_late_main.">late_main</label>
             <audio id="audioedm_late_main." src="tracks/edm_late_main.ogg" preload="none" loop></audio>
         </div>
         <div class="trait">
             <img src="icon/emo.png" alt="emo">
             <h3>Emo</h3>
-            <input type="checkbox" id="emo_early_drums." name="emo_early_drums.">
+            <input type="checkbox" id="emo_early_drums." name="emo_early_drums." class="early">
             <label for="emo_early_drums.">early_drums</label>
             <audio id="audioemo_early_drums." src="tracks/emo_early_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="emo_early_main." name="emo_early_main.">
+            <input type="checkbox" id="emo_early_main." name="emo_early_main." class="early">
             <label for="emo_early_main.">early_main</label>
             <audio id="audioemo_early_main." src="tracks/emo_early_main.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="emo_late_drums." name="emo_late_drums.">
+            <input type="checkbox" id="emo_late_drums." name="emo_late_drums." class="late">
             <label for="emo_late_drums.">late_drums</label>
             <audio id="audioemo_late_drums." src="tracks/emo_late_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="emo_late_main." name="emo_late_main.">
+            <input type="checkbox" id="emo_late_main." name="emo_late_main." class="late">
             <label for="emo_late_main.">late_main</label>
             <audio id="audioemo_late_main." src="tracks/emo_late_main.ogg" preload="none" loop></audio>
         </div>
         <div class="trait">
             <img src="icon/heartsteel.png" alt="heartsteel">
             <h3>Heartsteel</h3>
-            <input type="checkbox" id="heartsteel_early_drums." name="heartsteel_early_drums.">
+            <input type="checkbox" id="heartsteel_early_drums." name="heartsteel_early_drums." class="early">
             <label for="heartsteel_early_drums.">early_drums</label>
             <audio id="audioheartsteel_early_drums." src="tracks/heartsteel_early_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="heartsteel_early_main." name="heartsteel_early_main.">
+            <input type="checkbox" id="heartsteel_early_main." name="heartsteel_early_main." class="early">
             <label for="heartsteel_early_main.">early_main</label>
             <audio id="audioheartsteel_early_main." src="tracks/heartsteel_early_main.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="heartsteel_early_secondary." name="heartsteel_early_secondary.">
+            <input type="checkbox" id="heartsteel_early_secondary." name="heartsteel_early_secondary." class="early">
             <label for="heartsteel_early_secondary.">early_secondary</label>
             <audio id="audioheartsteel_early_secondary." src="tracks/heartsteel_early_secondary.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="heartsteel_late_drums." name="heartsteel_late_drums.">
+            <input type="checkbox" id="heartsteel_late_drums." name="heartsteel_late_drums." class="late">
             <label for="heartsteel_late_drums.">late_drums</label>
             <audio id="audioheartsteel_late_drums." src="tracks/illbeats_late.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="heartsteel_late_main." name="heartsteel_late_main.">
+            <input type="checkbox" id="heartsteel_late_main." name="heartsteel_late_main." class="late">
             <label for="heartsteel_late_main.">late_main</label>
             <audio id="audioheartsteel_late_main." src="tracks/heartsteel_late_main.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="heartsteel_late_secondary." name="heartsteel_late_secondary.">
+            <input type="checkbox" id="heartsteel_late_secondary." name="heartsteel_late_secondary." class="late">
             <label for="heartsteel_late_secondary.">late_secondary</label>
             <audio id="audioheartsteel_late_secondary." src="tracks/heartsteel_late_secondary.ogg" preload="none" loop></audio>
         </div>
         <div class="trait">
             <img src="icon/hyperpop.png" alt="hyperpop">
             <h3>Hyperpop</h3>
-            <input type="checkbox" id="hyperpop_early." name="hyperpop_early.">
+            <input type="checkbox" id="hyperpop_early." name="hyperpop_early." class="early">
             <label for="hyperpop_early.">early</label>
             <audio id="audiohyperpop_early." src="tracks/hyperpop_early.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="hyperpop_late." name="hyperpop_late.">
+            <input type="checkbox" id="hyperpop_late." name="hyperpop_late." class="late">
             <label for="hyperpop_late.">late</label>
             <audio id="audiohyperpop_late." src="tracks/hyperpop_late.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="hyperpop_late_drums." name="hyperpop_late_drums.">
+            <input type="checkbox" id="hyperpop_late_drums." name="hyperpop_late_drums." class="late">
             <label for="hyperpop_late_drums.">late_drums</label>
             <audio id="audiohyperpop_late_drums." src="tracks/hyperpop_late_drums.ogg" preload="none" loop></audio>
         </div>
         <div class="trait">
             <img src="icon/illbeats.png" alt="ILLBEATS">
             <h3>ILLBEATS</h3>
-            <input type="checkbox" id="illbeats_early." name="illbeats_early.">
+            <input type="checkbox" id="illbeats_early." name="illbeats_early." class="early">
             <label for="illbeats_early.">early</label>
             <audio id="audioillbeats_early." src="tracks/illbeats_early.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="illbeats_late." name="illbeats_late.">
+            <input type="checkbox" id="illbeats_late." name="illbeats_late." class="late">
             <label for="illbeats_late.">late</label>
             <audio id="audioillbeats_late." src="tracks/heartsteel_late_drums.ogg" preload="none" loop></audio>
         </div>
         <div class="trait">
             <img src="icon/jazz.png" alt="jazz">
             <h3>Jazz</h3>
-            <input type="checkbox" id="jazz_early_main." name="jazz_early_main.">
+            <input type="checkbox" id="jazz_early_main." name="jazz_early_main." class="early">
             <label for="jazz_early_main.">early_main</label>
             <audio id="audiojazz_early_main." src="tracks/jazz_early_main.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="jazz_late_main." name="jazz_late_main.">
+            <input type="checkbox" id="jazz_late_main." name="jazz_late_main." class="late">
             <label for="jazz_late_main.">late_main</label>
             <audio id="audiojazz_late_main." src="tracks/jazz_late_main.ogg" preload="none" loop></audio>
         </div>
         <div class="trait">
             <img src="icon/mixmaster.png" alt="mixmaster">
             <h3>MixMaster</h3>
-            <input type="checkbox" id="mixmaster_early." name="mixmaster_early.">
+            <input type="checkbox" id="mixmaster_early." name="mixmaster_early." class="early">
             <label for="mixmaster_early.">early</label>
             <audio id="audiomixmaster_early." src="tracks/mixmaster_early.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="mixmaster_late." name="mixmaster_late.">
+            <input type="checkbox" id="mixmaster_late." name="mixmaster_late." class="late">
             <label for="mixmaster_late.">late</label>
             <audio id="audiomixmaster_late." src="tracks/mixmaster_late.ogg" preload="none" loop></audio>
         </div>
         <div class="trait">
             <img src="icon/pentakill.png" alt="pentakill">
             <h3>Pentakill</h3>
-            <input type="checkbox" id="pentakill_early_drums." name="pentakill_early_drums.">
+            <input type="checkbox" id="pentakill_early_drums." name="pentakill_early_drums." class="early">
             <label for="pentakill_early_drums.">early_drums</label>
             <audio id="audiopentakill_early_drums." src="tracks/pentakill_early_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="pentakill_early_main." name="pentakill_early_main.">
+            <input type="checkbox" id="pentakill_early_main." name="pentakill_early_main." class="early">
             <label for="pentakill_early_main.">early_main</label>
             <audio id="audiopentakill_early_main." src="tracks/pentakill_early_main.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="pentakill_early_secondary." name="pentakill_early_secondary.">
+            <input type="checkbox" id="pentakill_early_secondary." name="pentakill_early_secondary." class="early">
             <label for="pentakill_early_secondary.">early_secondary</label>
             <audio id="audiopentakill_early_secondary." src="tracks/pentakill_early_secondary.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="pentakill_late_drums." name="pentakill_late_drums.">
+            <input type="checkbox" id="pentakill_late_drums." name="pentakill_late_drums." class="late">
             <label for="pentakill_late_drums.">late_drums</label>
             <audio id="audiopentakill_late_drums." src="tracks/pentakill_late_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="pentakill_late_main." name="pentakill_late_main.">
+            <input type="checkbox" id="pentakill_late_main." name="pentakill_late_main." class="late">
             <label for="pentakill_late_main.">late_main</label>
             <audio id="audiopentakill_late_main." src="tracks/pentakill_late_main.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="pentakill_late_secondary." name="pentakill_late_secondary.">
+            <input type="checkbox" id="pentakill_late_secondary." name="pentakill_late_secondary." class="late">
             <label for="pentakill_late_secondary.">late_secondary</label>
             <audio id="audiopentakill_late_secondary." src="tracks/pentakill_late_secondary.ogg" preload="none" loop></audio>
         </div>
         <div class="trait">
             <img src="icon/truedmg.png" alt="truedamage">
             <h3>True Damage</h3>
-            <input type="checkbox" id="truedamage_early_drums." name="truedamage_early_drums.">
+            <input type="checkbox" id="truedamage_early_drums." name="truedamage_early_drums." class="early">
             <label for="truedamage_early_drums.">early_drums</label>
             <audio id="audiotruedamage_early_drums." src="tracks/truedamage_early_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="truedamage_early_main." name="truedamage_early_main.">
+            <input type="checkbox" id="truedamage_early_main." name="truedamage_early_main." class="early">
             <label for="truedamage_early_main.">early_main</label>
             <audio id="audiotruedamage_early_main." src="tracks/truedamage_early_main.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="truedamage_early_secondary." name="truedamage_early_secondary.">
+            <input type="checkbox" id="truedamage_early_secondary." name="truedamage_early_secondary." class="early">
             <label for="truedamage_early_secondary.">early_secondary</label>
             <audio id="audiotruedamage_early_secondary." src="tracks/truedamage_early_secondary.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="truedamage_late_drums." name="truedamage_late_drums.">
+            <input type="checkbox" id="truedamage_late_drums." name="truedamage_late_drums." class="late">
             <label for="truedamage_late_drums.">late_drums</label>
             <audio id="audiotruedamage_late_drums." src="tracks/truedamage_late_drums.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="truedamage_late_main." name="truedamage_late_main.">
+            <input type="checkbox" id="truedamage_late_main." name="truedamage_late_main." class="late">
             <label for="truedamage_late_main.">late_main</label>
             <audio id="audiotruedamage_late_main." src="tracks/truedamage_late_main.ogg" preload="none" loop></audio>
             <br>
-            <input type="checkbox" id="truedamage_late_secondary." name="truedamage_late_secondary.">
+            <input type="checkbox" id="truedamage_late_secondary." name="truedamage_late_secondary." class="late">
             <label for="truedamage_late_secondary.">late_secondary</label>
             <audio id="audiotruedamage_late_secondary." src="tracks/truedamage_late_secondary.ogg" preload="none" loop></audio>
         </div>
@@ -334,11 +336,11 @@
         <label for="starting_carousel.">Starting Carousel</label>
         <audio id="audiostarting_carousel." src="tracks/starting_carousel.ogg" preload="none" loop></audio>
         <br>
-        <input type="checkbox" id="piano_early." name="piano_early.">
+        <input type="checkbox" id="piano_early." name="piano_early." class="early">
         <label for="piano_early.">No Traits Early</label>
         <audio id="audiopiano_early." src="tracks/piano_early.ogg" preload="none" loop></audio>
         <br>
-        <input type="checkbox" id="piano_late." name="piano_late.">
+        <input type="checkbox" id="piano_late." name="piano_late." class="late">
         <label for="piano_late.">No Traits Late</label>
         <audio id="audiopiano_late." src="tracks/piano_late.ogg" preload="none" loop></audio>
         <br>
