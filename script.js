@@ -126,12 +126,18 @@ function generateShareableLink() {
 
     checkboxes.forEach(function(checkbox) {
         if (checkbox.checked) {
-            selectedTracks.push(checkbox.id);
+            selectedTracks.push(encodeURIComponent(checkbox.id));
         }
     });
 
     var url = window.location.href.split('?')[0];
-    url += '?selectedTracks=' + selectedTracks.join(',') + ',';
+    var params = selectedTracks.join('%2E%2C'); // Encoding dot and comma
+
+    // Add the parameters to the URL
+    url += '?selectedTracks=' + params;
+
+    // Remove any trailing dot or comma for legacy URLs
+    url = url.replace(/[.,]$/, '');
 
     navigator.clipboard.writeText(url).then(function() {
             alert("Mix URL copied to clipboard!");
