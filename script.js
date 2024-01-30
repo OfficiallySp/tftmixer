@@ -14,6 +14,16 @@ var endedCallbackArray = [];
 
 function playSelectedTracks() {
     stopAllTracks();
+
+    // reuse loaded AudioBuffer in real time mode
+    if (document.getElementById('realTime').checked &&
+        audio_buffers &&
+        startCallback
+    ) {
+        audio_buffers.forEach(startCallback);
+        return;
+    }
+
     // Show loading indicator
     document.getElementById('loadingIndicator').style.display = 'block';
     var playlist = [];
@@ -129,6 +139,12 @@ function setGlobalVolume(value) {
     if (masterGainNode != null) {
         masterGainNode.gain.setValueAtTime(value, context.currentTime);
     }
+}
+
+function toggleRealTime() {
+    stopAllTracks();
+    audio_buffers = [];
+    startCallback = null;
 }
 
 function toggleTrackRealTime(trackIndex) {
