@@ -78,10 +78,11 @@ function playSelectedTracks() {
             gainNode.connect(masterGainNode);
             sourceArray.push(source);
             audioGainArray.push(gainNode);
-            gainNode.gain.setValueAtTime(activeTrackElements[i].checked ? 1 : 0, context.currentTime);
+            const trackChecked = !document.getElementById('realTime').checked || activeTrackElements[i].checked;
+            gainNode.gain.setValueAtTime(trackChecked ? 1 : 0, context.currentTime);
             // prepare for repeat play
             endedArray.push(false);
-            if (activeTrackElements[i].checked) {
+            if (trackChecked) {
                 playingArray[i] = true;
             }
             endedCallbackArray[i] = () => {
