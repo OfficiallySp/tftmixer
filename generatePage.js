@@ -15,7 +15,7 @@ fs.readdir("tracks", function (err, files) {
 
   files.forEach(function (file, index) {
     // Make one pass and make the file complete
-    var fileId = file.slice(0, -3);
+    var fileId = file.slice(0, -4);
     htmlText += `<input type="checkbox" id="`+ fileId + `" name="` + fileId + `">
     <label for="unknown1">` + fileId + `</label>
     <audio id="audio` + fileId + `" src="tracks/` + file + `" preload="auto"></audio>`;
