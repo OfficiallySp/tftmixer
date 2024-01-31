@@ -112,7 +112,7 @@ function playSelectedTracks() {
 }
 
 function areAllCheckedTracksDone() {
-    return playingArray.every((playing) => playing === false);
+    return playingArray.some((playing) => playing === false) && playingArray.every((playing) => playing === false);
 }
 
 function stopAllTracks() {
