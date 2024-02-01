@@ -6,13 +6,27 @@ var activeTrackElements = [];
 var masterGainNode = null
 var initial = true;
 
+var audio_buffers = [];
+var startCallback = null;
+var endedArray = [];
+var playingArray = [];
+var endedCallbackArray = [];
+
 function playSelectedTracks() {
     stopAllTracks();
+
+    // reuse loaded AudioBuffer in real time mode
+    if (document.getElementById('realTime').checked &&
+        audio_buffers &&
+        startCallback
+    ) {
+        audio_buffers.forEach(startCallback);
+        return;
+    }
+
     // Show loading indicator
     document.getElementById('loadingIndicator').style.display = 'block';
     var playlist = [];
-    sourceArray = [];
-    audioGainArray = [];
     activeTrackElements = [];
 
     var currentGlobalVolume = getGlobalVolume(); // Get the current global volume
@@ -40,7 +54,7 @@ function playSelectedTracks() {
         );
         // get our AudioContext
         // decode the data
-        const audio_buffers = await Promise.all(
+        audio_buffers = await Promise.all(
             data_buffers.map((buf) => context.decodeAudioData(buf))
         );
         // to enable the AudioContext we need to handle a user gesture
@@ -48,7 +62,8 @@ function playSelectedTracks() {
         masterGainNode = context.createGain();
         masterGainNode.connect(context.destination);
         masterGainNode.gain.setValueAtTime(currentGlobalVolume, context.currentTime);
-        audio_buffers.forEach((buf, i) => {
+
+        startCallback = (buf, i) => {
             // a buffer source is a really small object
             // don't be afraid of creating and throwing it
             const source = context.createBufferSource();
@@ -63,21 +78,58 @@ function playSelectedTracks() {
             gainNode.connect(masterGainNode);
             sourceArray.push(source);
             audioGainArray.push(gainNode);
-            gainNode.gain.setValueAtTime(activeTrackElements[i].checked ? 1 : 0, context.currentTime);
-            document.getElementById('loadingIndicator').style.display = 'none';
-        });
+            const trackChecked = !document.getElementById('realTime').checked || activeTrackElements[i].checked;
+            gainNode.gain.setValueAtTime(trackChecked ? 1 : 0, context.currentTime);
+            // prepare for repeat play
+            endedArray.push(false);
+            if (trackChecked) {
+                playingArray[i] = true;
+            }
+            endedCallbackArray[i] = () => {
+                endedArray[i] = true;
+                if (playingArray[i]) {
+                    playingArray[i] = false;
+                    // only the last track triggers restart
+                    if (areAllCheckedTracksDone()) {
+                        if (document.getElementById('repeat').checked) {
+                            stopAllTracks();
+                            audio_buffers.forEach(startCallback);
+                        }
+                    }
+                }
+            };
+            source.addEventListener('ended', endedCallbackArray[i]);
+        };
+        audio_buffers.forEach(startCallback);
+
         // Avoid appearing to infinite load when playing with no tracks selected
         if (audio_buffers.length == 0) {
             stopAllTracks();
         }
+
+        document.getElementById('loadingIndicator').style.display = 'none';
     })();
+}
+
+function areAllCheckedTracksDone() {
+    return playingArray.some((playing) => playing === false) && playingArray.every((playing) => playing === false);
 }
 
 function stopAllTracks() {
     document.getElementById('loadingIndicator').style.display = 'none';
     for (var i = 0; i < sourceArray.length; i++) {
         sourceArray[i].stop();
+        if (endedCallbackArray[i] != undefined) {
+            sourceArray[i].removeEventListener('ended', endedCallbackArray[i]);
+            delete endedCallbackArray[i];
+        }
     }
+    // clear array contents made in startCallback()
+    sourceArray = [];
+    audioGainArray = [];
+    endedArray = [];
+    playingArray = [];
+    endedCallbackArray = [];
 }
 
 function getGlobalVolume() {
@@ -90,12 +142,26 @@ function setGlobalVolume(value) {
     }
 }
 
+function toggleRealTime() {
+    stopAllTracks();
+    audio_buffers = [];
+    startCallback = null;
+}
+
 function toggleTrackRealTime(trackIndex) {
     if (document.getElementById('realTime').checked) {
         const gainNode = audioGainArray[trackIndex];
         if (gainNode != null) {
             const track = activeTrackElements[trackIndex];
             gainNode.gain.setValueAtTime(track.checked ? 1 : 0, context.currentTime);
+
+            if (endedArray[trackIndex] !== true) {
+                if (track.checked) {
+                    playingArray[trackIndex] = true;
+                } else if (playingArray[trackIndex] != undefined) {
+                    delete playingArray[trackIndex];
+                }
+            }
         }
     }
 }
@@ -109,6 +175,16 @@ function randomSelectTracks(trackSelector = '') {
         var randomIndex = Math.floor(Math.random() * checkboxes.length);
         checkboxes[randomIndex].checked = true;
         checkboxes[randomIndex].dispatchEvent(new Event('change'))
+    }
+
+    if (document.getElementById('realTime').checked &&
+        audio_buffers &&
+        startCallback &&
+        document.getElementById('repeat').checked &&
+        areAllCheckedTracksDone()
+    ) {
+        stopAllTracks();
+        audio_buffers.forEach(startCallback);
     }
 }
 
