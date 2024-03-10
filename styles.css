@@ -73,3 +73,32 @@ button:hover {
 .toggle label {
     display: inline-flex;
 }
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-content {
+    flex-grow: 1;
+}
+
+.community-presets {
+    width: 300px; /* Adjust the width as needed */
+    margin-left: 20px; /* Space between main content and presets */
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.community-presets h3 {
+    margin-top: 0;
+}
+
+.community-presets ul {
+    list-style: none;
+    padding: 0;
+}
+
+.community-presets li {
+    margin-bottom: 5px;
+}
