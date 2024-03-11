@@ -35,6 +35,7 @@ var endedCallbackArray = [];
 
 function playSelectedTracks() {
     stopAllTracks();
+
     // reuse loaded AudioBuffer in real time mode
     if (document.getElementById('realTime').checked &&
         audio_buffers &&
@@ -43,21 +44,7 @@ function playSelectedTracks() {
         audio_buffers.forEach(startCallback);
         return;
     }
-    if (context.state === 'suspended') {
-        context.resume().then(() => {
-            console.log('AudioContext resumed successfully');
-            // Call the original play logic after resuming the context
-            startPlayback();
-        }).catch(error => {
-            console.error('Error resuming AudioContext:', error);
-        });
-    } else {
-        // If not suspended, proceed as normal
-        startPlayback();
-    }
-}
 
-function startPlayback() {
     // Show loading indicator
     document.getElementById('loadingIndicator').style.display = 'block';
     var playlist = [];
