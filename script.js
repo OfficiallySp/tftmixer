@@ -44,19 +44,6 @@ function playSelectedTracks() {
         audio_buffers.forEach(startCallback);
         return;
     }
-    if ('mediaSession' in navigator) {
-        navigator.mediaSession.metadata = new MediaMetadata({
-            title: 'Track Title',
-            artist: 'Track Artist',
-            album: 'Track Album',
-            artwork: [{src: 'track-thumbnail.png', sizes: '512x512', type: 'image/png'}]
-        });
-    
-        navigator.mediaSession.setActionHandler('play', function() {playSelectedTracks});
-        navigator.mediaSession.setActionHandler('pause', function() {stopAllTracks});
-        // Add other handlers for nexttrack, previoustrack, etc.
-    }
-    
 
     // Show loading indicator
     document.getElementById('loadingIndicator').style.display = 'block';
