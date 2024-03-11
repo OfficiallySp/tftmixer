@@ -62,7 +62,7 @@ function playSelectedTracks() {
         // Collect tracks to load (all if real time mode)
         if (document.getElementById('realTime').checked || trackElement.checked) {
             activeTrackElements.push(trackElement);
-            playlist.push("tracks/" + tracks[i] + ".ogg");
+            playlist.push("tracks/" + tracks[i] + ".aac");
         }
     }
     initial = false;
