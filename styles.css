@@ -2,104 +2,105 @@
 /* CSS Document */
 
 body {
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 h1,
 h2,
 h3,
-h4{
-    color: #e0e0e0;
+h4 {
+  color: #e0e0e0;
 }
 
 label {
-    color: #ffffff;
-    display: flex
+  color: #ffffff;
+  display: flex;
 }
 
 button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
-
 .background-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('bg.png');
-    background-size: cover;
-    background-position: center;
-    filter: blur(2px);
-    z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("bg.png");
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px);
+  z-index: -1;
 }
 
 .background-darken {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: -1;
 }
 
 .trait-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
 }
 
 .trait {
-    text-align: left;
-    background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0px 0px 5px 1px #ebebeb;
-    padding: 5px;
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 5px 1px #ebebeb;
+  padding: 5px;
 }
 
 .trait label,
 .toggle label {
-    display: inline-flex;
+  display: inline-flex;
 }
 
 .container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 50px auto;
 }
 
 .main-content {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .community-presets {
-    width: 300px; /* Adjust the width as needed */
-    margin-left: 20px; /* Space between main content and presets */
-    border: 1px solid #ccc;
-    padding: 10px;
+  width: 300px; /* Adjust the width as needed */
+  margin-left: 20px; /* Space between main content and presets */
+  border: 1px solid #ccc;
+  padding: 10px;
 }
 
 .community-presets h3 {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .community-presets ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .community-presets li {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
