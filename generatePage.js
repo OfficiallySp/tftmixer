@@ -1,3 +1,8 @@
+/*
+NOTE: This script is obsolete and is NOT used to generate the current index.html or script.js.
+The existing index.html and script.js files were manually created and are more advanced.
+This script is kept for historical purposes only.
+*/
 var fs = require('fs');
 var path = require('path');
 var { htmlStart, htmlEnd, jsStart, jsEnd } = require('./pageElements')
