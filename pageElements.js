@@ -1,3 +1,8 @@
+/*
+NOTE: This script is obsolete and contains elements that are NOT used in the current index.html or script.js.
+The existing index.html and script.js files were manually created and are more advanced.
+This script is kept for historical purposes only.
+*/
 const htmlStart = 
   `<!DOCTYPE html>
 <html>
