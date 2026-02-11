@@ -15,14 +15,14 @@
     <div class="background-image"></div>
     <div class="background-darken"></div>
     <h1>TFT Remix Rumble Music Mixer</h1>
-    <h2>Select Tracks to Play, Select multiple tracks to play on top of eachover to create unique combinations.</h2>
+    <h2>Select tracks to play, then layer multiple tracks together to create unique combinations.</h2>
 	<div class="alert alert-warning">
         <strong>Set 10 Is Back</strong><br>
 	Set 10 has returned. Time to party again. look out for small updates througout
     </div>
     <div class="alert alert-warning">
         <strong>We are moving</strong><br>
-	We're automatically redirecting you to the new URL for the TFT mixer. instead of <a href="officiallysp.net/tftmixer">officiallysp.net/tftmixer</a>. Find us at <a href="tftmixer.officiallysp.net">tftmixer.officiallysp.net</a> in the future. As always, thank you all for your support and remember to report any issues and feature suggestions to the <a href="https://github.com/OfficiallySp/tftmixer"><strong>GitHub repository</strong></a>
+	We're automatically redirecting you to the new URL for the TFT mixer. instead of <a href="https://officiallysp.net/tftmixer">officiallysp.net/tftmixer</a>. Find us at <a href="https://tftmixer.officiallysp.net">tftmixer.officiallysp.net</a> in the future. As always, thank you all for your support and remember to report any issues and feature suggestions to the <a href="https://github.com/OfficiallySp/tftmixer"><strong>GitHub repository</strong></a>
     </div>
     <div>
         <label for="globalVolume"><strong>
@@ -51,6 +51,13 @@
     <button class="btn btn-danger" onclick="clearAllSelections()">Clear All Selections</button>
     <button onclick="generateShareableLink()" class="btn btn-info">Generate Shareable Link</button>
     <button onclick="tweetMix()" class="btn btn-primary"><i class="fab fa-twitter"></i> Tweet Mix</button>
+    <div class="control-center">
+        <h4>Control Center:</h4>
+        <button class="btn btn-outline-light btn-sm" onclick="seekBySeconds(-10)">-10s</button>
+        <button class="btn btn-outline-light btn-sm" onclick="restartCurrentMix()">Restart</button>
+        <button class="btn btn-outline-light btn-sm" onclick="seekBySeconds(10)">+10s</button>
+        <span id="playbackPosition">00:00</span>
+    </div>
     <div class="alert alert-success" id="copyNotification" style="display:none; position: fixed; bottom: 20px; right: 20px;">
         <strong>URL Copied to Clipboard</strong>
     </div>
@@ -227,7 +234,7 @@
             <br>
             <input type="checkbox" id="heartsteel_late_drums" name="heartsteel_late_drums" class="late">
             <label for="heartsteel_late_drums">late_drums</label>
-            <audio id="audioheartsteel_late_drums" src="tracks/heartsteel_late_drums.aac" preload="none" loop></audio>
+            <audio id="audioheartsteel_late_drums" src="tracks/illbeats_late.aac" preload="none" loop></audio>
             <br>
             <input type="checkbox" id="heartsteel_late_main" name="heartsteel_late_main" class="late">
             <label for="heartsteel_late_main">late_main</label>
@@ -250,7 +257,7 @@
             <br>
             <input type="checkbox" id="hyperpop_late_drums" name="hyperpop_late_drums" class="late">
             <label for="hyperpop_late_drums">late_drums</label>
-            <audio id="audiohyperpop_late_drums" src="tracks/hyperpop_late_drums.aac" preload="none" loop></audio>
+            <audio id="audiohyperpop_late_drums" src="tracks/truedamage_late_drums.aac" preload="none" loop></audio>
         </div>
         <div class="trait">
             <img src="icon/illbeats.png" alt="ILLBEATS">
@@ -261,7 +268,7 @@
             <br>
             <input type="checkbox" id="illbeats_late" name="illbeats_late" class="late">
             <label for="illbeats_late">late</label>
-            <audio id="audioillbeats_late" src="tracks/illbeats_late.aac" preload="none" loop></audio>
+            <audio id="audioillbeats_late" src="tracks/heartsteel_late_drums.aac" preload="none" loop></audio>
         </div>
         <div class="trait">
             <img src="icon/jazz.png" alt="jazz">
@@ -329,7 +336,7 @@
             <br>
             <input type="checkbox" id="truedamage_late_drums" name="truedamage_late_drums" class="late">
             <label for="truedamage_late_drums">late_drums</label>
-            <audio id="audiotruedamage_late_drums" src="tracks/truedamage_late_drums.aac" preload="none" loop></audio>
+            <audio id="audiotruedamage_late_drums" src="tracks/hyperpop_late_drums.aac" preload="none" loop></audio>
             <br>
             <input type="checkbox" id="truedamage_late_main" name="truedamage_late_main" class="late">
             <label for="truedamage_late_main">late_main</label>

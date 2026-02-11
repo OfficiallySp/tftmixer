@@ -104,3 +104,21 @@ button:hover {
 .community-presets li {
   margin-bottom: 5px;
 }
+
+.control-center {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.control-center h4 {
+  margin: 0;
+}
+
+#playbackPosition {
+  color: #ffffff;
+  font-weight: 700;
+  min-width: 56px;
+}
