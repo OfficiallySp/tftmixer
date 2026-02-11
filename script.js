@@ -59,8 +59,7 @@ function playSelectedTracks() {
         // when using an anon func (but anon func makes indexing the tracks easy)
         const trackElement = document.getElementById(tracks[i])
         if (initial) {
-            const trackIndex = i;
-            trackElement.addEventListener('change', () => toggleTrackRealTime(trackIndex));
+            trackElement.addEventListener('change', () => toggleTrackRealTime(trackElement));
         }
         // OPTIMIZATION: Only load checked tracks, even in real-time mode
         // Real-time mode will load tracks on-demand when checked
@@ -179,17 +178,17 @@ function toggleRealTime() {
     startCallback = null;
 }
 
-function toggleTrackRealTime(trackIndex) {
+function toggleTrackRealTime(trackElement) {
     if (document.getElementById('realTime').checked) {
-        const track = activeTrackElements[trackIndex];
-        if (!track) return;
-        
+        const trackIndex = activeTrackElements.indexOf(trackElement);
+        if (trackIndex === -1) return;
+
         const gainNode = audioGainArray[trackIndex];
         if (gainNode != null) {
-            gainNode.gain.setValueAtTime(track.checked ? 1 : 0, context.currentTime);
+            gainNode.gain.setValueAtTime(trackElement.checked ? 1 : 0, context.currentTime);
 
             if (endedArray[trackIndex] !== true) {
-                if (track.checked) {
+                if (trackElement.checked) {
                     playingArray[trackIndex] = true;
                 } else if (playingArray[trackIndex] != undefined) {
                     delete playingArray[trackIndex];
@@ -282,10 +281,11 @@ function tweetMix() {
 }
 
 function applyPreset(presetName) {
-    // First, clear all selections
-    const checkboxes = document.querySelectorAll('input[type=checkbox]');
-    checkboxes.forEach(checkbox => {
+    // First, clear all track selections (not Real Time/Repeat checkboxes)
+    const trackCheckboxes = document.querySelectorAll('.trait input[type="checkbox"]');
+    trackCheckboxes.forEach(checkbox => {
         checkbox.checked = false;
+        checkbox.dispatchEvent(new Event('change'));
     });
 
     // Apply the preset selections
@@ -294,10 +294,9 @@ function applyPreset(presetName) {
         const checkbox = document.getElementById(selectionId);
         if (checkbox) {
             checkbox.checked = true;
+            checkbox.dispatchEvent(new Event('change'));
         }
     });
-
-    // Update any UI elements or states as necessary
 }
 
 function setTracksFromURL() {
