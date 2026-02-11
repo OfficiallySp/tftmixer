@@ -54,6 +54,7 @@ function playSelectedTracks() {
     activeTrackElements = [];
 
     var currentGlobalVolume = getGlobalVolume(); // Get the current global volume
+    var isRealTime = document.getElementById('realTime').checked;
     for (var i = 0; i < tracks.length; i++) {
         // Hacky way to only add the listeners once bc they are annoying to remove 
         // when using an anon func (but anon func makes indexing the tracks easy)
@@ -62,9 +63,9 @@ function playSelectedTracks() {
             const trackIndex = i;
             trackElement.addEventListener('change', () => toggleTrackRealTime(trackIndex));
         }
-        // OPTIMIZATION: Only load checked tracks, even in real-time mode
-        // Real-time mode will load tracks on-demand when checked
-        if (trackElement.checked) {
+        // In real-time mode, load ALL tracks so they can be toggled on/off
+        // In normal mode, only load checked tracks
+        if (isRealTime || trackElement.checked) {
             activeTrackElements.push(trackElement);
             playlist.push("tracks/" + tracks[i] + ".aac");
         }
@@ -177,6 +178,7 @@ function toggleRealTime() {
     stopAllTracks();
     audio_buffers = [];
     startCallback = null;
+    activeTrackElements = [];
 }
 
 function toggleTrackRealTime(trackIndex) {
