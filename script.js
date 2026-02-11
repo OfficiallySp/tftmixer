@@ -181,18 +181,22 @@ function toggleRealTime() {
 
 function toggleTrackRealTime(trackIndex) {
     if (document.getElementById('realTime').checked) {
-        const track = activeTrackElements[trackIndex];
-        if (!track) return;
+        const trackElement = document.getElementById(tracks[trackIndex]);
+        if (!trackElement) return;
         
-        const gainNode = audioGainArray[trackIndex];
+        // Find the index in activeTrackElements array
+        const activeIndex = activeTrackElements.findIndex(el => el.id === trackElement.id);
+        if (activeIndex === -1) return;
+        
+        const gainNode = audioGainArray[activeIndex];
         if (gainNode != null) {
-            gainNode.gain.setValueAtTime(track.checked ? 1 : 0, context.currentTime);
+            gainNode.gain.setValueAtTime(trackElement.checked ? 1 : 0, context.currentTime);
 
-            if (endedArray[trackIndex] !== true) {
-                if (track.checked) {
-                    playingArray[trackIndex] = true;
-                } else if (playingArray[trackIndex] != undefined) {
-                    delete playingArray[trackIndex];
+            if (endedArray[activeIndex] !== true) {
+                if (trackElement.checked) {
+                    playingArray[activeIndex] = true;
+                } else if (playingArray[activeIndex] != undefined) {
+                    delete playingArray[activeIndex];
                 }
             }
         }
@@ -243,18 +247,15 @@ function generateShareableLink() {
 
     checkboxes.forEach(function(checkbox) {
         if (checkbox.checked) {
-            selectedTracks.push(encodeURIComponent(checkbox.id));
+            selectedTracks.push(checkbox.id);
         }
     });
 
     var url = window.location.href.split('?')[0];
-    var params = selectedTracks.join('%2C'); // Encoding comma
+    var params = selectedTracks.map(encodeURIComponent).join(',');
 
     // Add the parameters to the URL
     url += '?selectedTracks=' + params;
-
-    // Remove any trailing dot or comma for legacy URLs
-    url = url.replace(/[.,]$/, '');
 
     navigator.clipboard.writeText(url).then(function() {
             alert("Mix URL copied to clipboard!");
