@@ -243,18 +243,15 @@ function generateShareableLink() {
 
     checkboxes.forEach(function(checkbox) {
         if (checkbox.checked) {
-            selectedTracks.push(encodeURIComponent(checkbox.id));
+            selectedTracks.push(checkbox.id);
         }
     });
 
     var url = window.location.href.split('?')[0];
-    var params = selectedTracks.join('%2C'); // Encoding comma
+    var params = selectedTracks.join(',');
 
     // Add the parameters to the URL
     url += '?selectedTracks=' + params;
-
-    // Remove any trailing dot or comma for legacy URLs
-    url = url.replace(/[.,]$/, '');
 
     navigator.clipboard.writeText(url).then(function() {
             alert("Mix URL copied to clipboard!");
@@ -306,11 +303,13 @@ function setTracksFromURL() {
 
     if (selectedTracks) {
         selectedTracks.split(',').forEach(function(trackId) {
-            // Remove any trailing dot for legacy URLs
-            trackId = trackId.replace(/\.+$/, '');
-            var checkbox = document.getElementById(trackId);
-            if (checkbox) {
-                checkbox.checked = true;
+            // Remove any trailing dot for legacy URLs and trim whitespace
+            trackId = trackId.replace(/\.+$/, '').trim();
+            if (trackId) {
+                var checkbox = document.getElementById(trackId);
+                if (checkbox) {
+                    checkbox.checked = true;
+                }
             }
         });
     }
