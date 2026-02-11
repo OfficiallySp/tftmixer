@@ -31,6 +31,15 @@ button:hover {
   background-color: #0056b3;
 }
 
+.control-center {
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+
+.control-center h4 {
+  margin: 8px 0;
+}
+
 .background-image {
   position: fixed;
   top: 0;

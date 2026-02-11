@@ -51,6 +51,13 @@
     <button class="btn btn-danger" onclick="clearAllSelections()">Clear All Selections</button>
     <button onclick="generateShareableLink()" class="btn btn-info">Generate Shareable Link</button>
     <button onclick="tweetMix()" class="btn btn-primary"><i class="fab fa-twitter"></i> Tweet Mix</button>
+
+    <div class="control-center">
+        <h4>Control Center</h4>
+        <button type="button" class="btn btn-outline-light btn-sm" onclick="seekRelative(-10)">Replay 10s</button>
+        <button type="button" class="btn btn-outline-light btn-sm" onclick="seekRelative(10)">Skip 10s</button>
+        <button type="button" class="btn btn-outline-light btn-sm" onclick="restartMix()">Restart</button>
+    </div>
     <div class="alert alert-success" id="copyNotification" style="display:none; position: fixed; bottom: 20px; right: 20px;">
         <strong>URL Copied to Clipboard</strong>
     </div>
