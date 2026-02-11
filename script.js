@@ -36,15 +36,31 @@ var endedCallbackArray = [];
 // Cache for audio buffers to avoid re-downloading
 var audioBufferCache = {};
 
+// Playback control center state
+var playbackStartContextTime = 0;  // context.currentTime when playback started
+var playbackOffset = 0;            // offset into the track (for seeking)
+var maxDuration = 0;               // duration of the longest active track
+var isPlaying = false;
+var progressAnimationId = null;
+
 function playSelectedTracks() {
     stopAllTracks();
+    playbackOffset = 0;
 
     // reuse loaded AudioBuffer in real time mode
     if (document.getElementById('realTime').checked &&
         audio_buffers &&
+        audio_buffers.length > 0 &&
         startCallback
     ) {
+        masterGainNode = context.createGain();
+        masterGainNode.connect(context.destination);
+        masterGainNode.gain.setValueAtTime(getGlobalVolume(), context.currentTime);
+        playbackStartContextTime = context.currentTime + 0.25;
+        isPlaying = true;
+        maxDuration = audio_buffers.reduce((max, buf) => Math.max(max, buf.duration), 0);
         audio_buffers.forEach(startCallback);
+        updateControlCenter(true);
         return;
     }
 
@@ -90,7 +106,6 @@ function playSelectedTracks() {
         
         audio_buffers = await Promise.all(loadPromises);
         // to enable the AudioContext we need to handle a user gesture
-        const current_time = context.currentTime;
         masterGainNode = context.createGain();
         masterGainNode.connect(context.destination);
         masterGainNode.gain.setValueAtTime(currentGlobalVolume, context.currentTime);
@@ -101,11 +116,9 @@ function playSelectedTracks() {
             const source = context.createBufferSource();
             // we only connect the decoded data, it's not copied
             source.buffer = buf;
-            // make it loop?
-            //source.loop = true;
-            // start them all 0.25s after we began, so we're sure they're in sync
+            // start them all at playbackStartContextTime, so we're sure they're in sync
             const gainNode = context.createGain();
-            source.start(current_time + 0.25);
+            source.start(playbackStartContextTime, playbackOffset);
             source.connect(gainNode);
             gainNode.connect(masterGainNode);
             sourceArray.push(source);
@@ -125,14 +138,29 @@ function playSelectedTracks() {
                     if (areAllCheckedTracksDone()) {
                         if (document.getElementById('repeat').checked) {
                             stopAllTracks();
+                            playbackOffset = 0;
+                            playbackStartContextTime = context.currentTime + 0.25;
+                            masterGainNode = context.createGain();
+                            masterGainNode.connect(context.destination);
+                            masterGainNode.gain.setValueAtTime(getGlobalVolume(), context.currentTime);
+                            isPlaying = true;
                             audio_buffers.forEach(startCallback);
+                            updateControlCenter(true);
+                        } else {
+                            updateControlCenter(false);
                         }
                     }
                 }
             };
             source.addEventListener('ended', endedCallbackArray[i]);
         };
+
+        // Calculate max duration for the progress bar
+        maxDuration = audio_buffers.reduce((max, buf) => Math.max(max, buf.duration), 0);
+        playbackStartContextTime = context.currentTime + 0.25;
+        isPlaying = true;
         audio_buffers.forEach(startCallback);
+        updateControlCenter(true);
 
         // Avoid appearing to infinite load when playing with no tracks selected
         if (audio_buffers.length == 0) {
@@ -162,6 +190,11 @@ function stopAllTracks() {
     endedArray = [];
     playingArray = [];
     endedCallbackArray = [];
+    isPlaying = false;
+    if (progressAnimationId) {
+        cancelAnimationFrame(progressAnimationId);
+        progressAnimationId = null;
+    }
 }
 
 function getGlobalVolume() {
@@ -219,7 +252,14 @@ function randomSelectTracks(trackSelector = '') {
         areAllCheckedTracksDone()
     ) {
         stopAllTracks();
+        playbackOffset = 0;
+        playbackStartContextTime = context.currentTime + 0.25;
+        masterGainNode = context.createGain();
+        masterGainNode.connect(context.destination);
+        masterGainNode.gain.setValueAtTime(getGlobalVolume(), context.currentTime);
+        isPlaying = true;
         audio_buffers.forEach(startCallback);
+        updateControlCenter(true);
     }
 }
 
@@ -297,6 +337,123 @@ function applyPreset(presetName) {
     });
 
     // Update any UI elements or states as necessary
+}
+
+// ---- Control Center Functions ----
+
+function formatTime(seconds) {
+    if (!isFinite(seconds) || seconds < 0) seconds = 0;
+    var mins = Math.floor(seconds / 60);
+    var secs = Math.floor(seconds % 60);
+    return mins + ':' + (secs < 10 ? '0' : '') + secs;
+}
+
+function getCurrentPlaybackTime() {
+    if (!isPlaying) return playbackOffset;
+    return playbackOffset + (context.currentTime - playbackStartContextTime);
+}
+
+function updateControlCenter(playing) {
+    var controlCenter = document.getElementById('controlCenter');
+    if (!controlCenter) return;
+
+    if (playing) {
+        controlCenter.style.display = 'block';
+        startProgressUpdate();
+    } else {
+        stopProgressUpdate();
+        // Update final state
+        var progressBar = document.getElementById('progressBar');
+        var currentTimeDisplay = document.getElementById('currentTime');
+        if (progressBar && currentTimeDisplay) {
+            var currentTime = Math.min(getCurrentPlaybackTime(), maxDuration);
+            progressBar.value = maxDuration > 0 ? (currentTime / maxDuration) * 100 : 0;
+            currentTimeDisplay.textContent = formatTime(currentTime);
+        }
+    }
+
+    var totalTimeDisplay = document.getElementById('totalTime');
+    if (totalTimeDisplay) {
+        totalTimeDisplay.textContent = formatTime(maxDuration);
+    }
+}
+
+function startProgressUpdate() {
+    stopProgressUpdate();
+    function update() {
+        if (!isPlaying) return;
+        var progressBar = document.getElementById('progressBar');
+        var currentTimeDisplay = document.getElementById('currentTime');
+        if (progressBar && currentTimeDisplay) {
+            var currentTime = getCurrentPlaybackTime();
+            var effectiveDuration = maxDuration - playbackOffset;
+            if (effectiveDuration > 0 && maxDuration > 0) {
+                var progress = Math.min(currentTime / maxDuration, 1) * 100;
+                progressBar.value = progress;
+            }
+            currentTimeDisplay.textContent = formatTime(Math.min(currentTime, maxDuration));
+        }
+        progressAnimationId = requestAnimationFrame(update);
+    }
+    progressAnimationId = requestAnimationFrame(update);
+}
+
+function stopProgressUpdate() {
+    if (progressAnimationId) {
+        cancelAnimationFrame(progressAnimationId);
+        progressAnimationId = null;
+    }
+}
+
+function seekTo(position) {
+    // position is 0-100 percentage
+    if (maxDuration <= 0 || !audio_buffers || audio_buffers.length === 0) return;
+    var newOffset = (position / 100) * maxDuration;
+    playbackOffset = Math.max(0, Math.min(newOffset, maxDuration));
+    if (isPlaying) {
+        // Stop current playback and restart at new position
+        stopAllTracks();
+        // Recreate master gain
+        var currentGlobalVolume = getGlobalVolume();
+        var current_time = context.currentTime;
+        masterGainNode = context.createGain();
+        masterGainNode.connect(context.destination);
+        masterGainNode.gain.setValueAtTime(currentGlobalVolume, context.currentTime);
+        playbackStartContextTime = current_time + 0.25;
+        isPlaying = true;
+        audio_buffers.forEach(startCallback);
+        updateControlCenter(true);
+    }
+}
+
+function skipForward() {
+    if (maxDuration <= 0) return;
+    var currentTime = getCurrentPlaybackTime();
+    var newTime = Math.min(currentTime + 10, maxDuration);
+    seekTo((newTime / maxDuration) * 100);
+}
+
+function skipBackward() {
+    if (maxDuration <= 0) return;
+    var currentTime = getCurrentPlaybackTime();
+    var newTime = Math.max(currentTime - 10, 0);
+    seekTo((newTime / maxDuration) * 100);
+}
+
+function restartPlayback() {
+    playbackOffset = 0;
+    if (audio_buffers && audio_buffers.length > 0) {
+        stopAllTracks();
+        var currentGlobalVolume = getGlobalVolume();
+        var current_time = context.currentTime;
+        masterGainNode = context.createGain();
+        masterGainNode.connect(context.destination);
+        masterGainNode.gain.setValueAtTime(currentGlobalVolume, context.currentTime);
+        playbackStartContextTime = current_time + 0.25;
+        isPlaying = true;
+        audio_buffers.forEach(startCallback);
+        updateControlCenter(true);
+    }
 }
 
 function setTracksFromURL() {

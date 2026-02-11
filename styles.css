@@ -104,3 +104,47 @@ button:hover {
 .community-presets li {
   margin-bottom: 5px;
 }
+
+/* Control Center */
+.control-center {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 12px 20px;
+  margin: 15px 0;
+}
+
+.control-center h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.control-center-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.control-btn {
+  min-width: auto;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+}
+
+.time-display {
+  color: #e0e0e0;
+  font-family: monospace;
+  font-size: 0.9rem;
+  min-width: 40px;
+  text-align: center;
+}
+
+.progress-bar-input {
+  flex: 1;
+  min-width: 120px;
+  height: 6px;
+  cursor: pointer;
+  accent-color: #007bff;
+}

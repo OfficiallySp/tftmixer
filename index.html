@@ -54,6 +54,23 @@
     <div class="alert alert-success" id="copyNotification" style="display:none; position: fixed; bottom: 20px; right: 20px;">
         <strong>URL Copied to Clipboard</strong>
     </div>
+    <div id="controlCenter" class="control-center" style="display: none;">
+        <h4>Playback Controls</h4>
+        <div class="control-center-row">
+            <button class="btn btn-sm btn-outline-light control-btn" onclick="restartPlayback()" title="Restart">
+                <i class="fas fa-redo"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-light control-btn" onclick="skipBackward()" title="Skip Back 10s">
+                <i class="fas fa-backward"></i> 10s
+            </button>
+            <span id="currentTime" class="time-display">0:00</span>
+            <input type="range" id="progressBar" class="progress-bar-input" min="0" max="100" step="0.1" value="0" oninput="seekTo(this.value)">
+            <span id="totalTime" class="time-display">0:00</span>
+            <button class="btn btn-sm btn-outline-light control-btn" onclick="skipForward()" title="Skip Forward 10s">
+                10s <i class="fas fa-forward"></i>
+            </button>
+        </div>
+    </div>
     <hr>
 <div class="container">
     <div class="main-content">
