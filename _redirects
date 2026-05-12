@@ -1,2 +1,4 @@
 # Only when visitors use the legacy subdomain — do not redirect *.netlify.app (apex proxy fetch).
+# Root path: "/*" may not match "/" alone; list "/" explicitly so the bar shows officiallysp.net/.../ .
+https://tftmixer.officiallysp.net/  https://officiallysp.net/tftmixer/  301!
 https://tftmixer.officiallysp.net/*  https://officiallysp.net/tftmixer/:splat  301!
