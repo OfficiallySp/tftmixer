@@ -1,1 +1,2 @@
-/*  https://officiallysp.net/tftmixer/:splat  301!
+# Only when visitors use the legacy subdomain — do not redirect *.netlify.app (apex proxy fetch).
+https://tftmixer.officiallysp.net/*  https://officiallysp.net/tftmixer/:splat  301!
